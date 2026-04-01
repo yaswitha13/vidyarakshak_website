@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Counseling Logs - Vidhyarakshak</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="desktop-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+            <div>
+                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
+                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Admin</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="admin_dashboard.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                Dashboard
+            </a>
+            <a href="admin_students.html" class="sidebar-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                Students
+            </a>
+            <a href="admin_teachers.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                Teachers
+            </a>
+            <a href="admin_alerts.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                Alerts
+            </a>
+            <a href="admin_profile.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                My Profile
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="sidebar-logout" onclick="clearSession()">
+                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <div class="dashboard-header">
+            <div>
+                <h1 class="dashboard-title">Counseling Sessions</h1>
+                <p style="color: var(--text-muted); margin-top: 4px;">Review teacher interventions and remarks across the institute</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline" style="height: 40px; padding: 0 16px; border-radius: 8px;" onclick="fetchCounselingLogs()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><path d="M21 2v6h-6"></path><path d="M3 12a9 9 0 1 0 2.13-5.83L2 9"></path></svg>
+                    Refresh Logs
+                </button>
+            </div>
+        </div>
+
+        <div id="alertMsg"></div>
+
+        <div class="table-card" style="margin-top: 24px;">
+            <div class="table-header">
+                <h2 class="table-title">Recent Interventions</h2>
+            </div>
+            
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>STUDENT INFO</th>
+                            <th>LOG DETAILS</th>
+                            <th>OBSERVATION & NOTES</th>
+                            <th>ACTION PLAN</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsContainer">
+                        <tr>
+                            <td colspan="4" class="text-center" style="padding: 30px;">Loading logs...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            requireAuth('Admin');
+            fetchCounselingLogs();
+        });
+
+        async function fetchCounselingLogs() {
+            try {
+                const logs = await apiRequest('/get-counseling', 'GET');
+                renderLogs(logs);
+            } catch (e) {
+                document.getElementById('logsContainer').innerHTML = `<tr><td colspan="4" class="text-danger text-center" style="padding: 24px;">Failed to load logs.</td></tr>`;
+            }
+        }
+
+        function renderLogs(logs) {
+            const container = document.getElementById('logsContainer');
+            container.innerHTML = '';
+
+            if(!logs || logs.length === 0) {
+                container.innerHTML = `<tr><td colspan="4" class="text-muted text-center" style="padding: 48px;">No counseling logs generated yet.</td></tr>`;
+                return;
+            }
+
+            logs.forEach(log => {
+                const sessionDate = new Date(log.session_date);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                sessionDate.setHours(0, 0, 0, 0);
+
+                let statusText = "Upcoming";
+                let statusColor = "#3B82F6"; // Blue
+                let statusBg = "#EFF6FF"; // Light Blue
+
+                if (sessionDate.getTime() < today.getTime()) {
+                    statusText = "Completed";
+                    statusColor = "#10B981"; // Green
+                    statusBg = "#DCFCE7"; // Light Green
+                } else if (sessionDate.getTime() === today.getTime()) {
+                    statusText = "Today";
+                    statusColor = "#8B5CF6"; // Purple
+                    statusBg = "#F5F3FF"; // Light Purple
+                } else {
+                    statusText = "Upcoming";
+                    statusColor = "#F59E0B"; // Orange
+                    statusBg = "#FFFBEB"; // Light Orange
+                }
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <div class="table-user-info">
+                            <span class="table-user-name">${log.student_name}</span>
+                            <span class="table-user-sub">Roll No: ${log.student_roll_no}</span>
+                            <span class="table-user-sub" style="margin-top:4px;">Parent Involvement: <span style="font-weight:600; color:var(--text-main);">${log.parent_involvement || '-'}</span></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-user-info">
+                            <span class="table-user-name" style="color:var(--primary);">${log.counseling_type}</span>
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                                <span class="table-user-sub" style="margin:0;">${log.session_date}</span>
+                                <span style="background:${statusBg}; color:${statusColor}; font-size:10px; font-weight:700; padding:2px 8px; border-radius:12px; text-transform:uppercase;">${statusText}</span>
+                            </div>
+                            <span class="table-user-sub">By: ${log.counselor_name}</span>
+                        </div>
+                    </td>
+                    <td style="max-width: 300px;">
+                        <span style="display:block; font-size:13px; font-weight:600; color:#EF4444; margin-bottom:4px;">Reason: ${log.dropout_reason || '-'}</span>
+                        <span style="display:block; font-size:12px; font-style:italic; color:var(--text-muted); background:#F8FAFC; padding:8px; border-radius:6px; border:1px solid #E2E8F0;">
+                            "${log.notes || 'No extensive notes provided'}"<br/>
+                            <strong style="color:var(--text-main); font-style:normal; margin-top:4px; display:inline-block;">Observed:</strong> ${log.behavior_observation || '-'}
+                        </span>
+                    </td>
+                    <td>
+                        <span style="display:block; font-size:13px; color:var(--text-main); margin-bottom:4px;">${log.action_plan || 'N/A'}</span>
+                        <span class="status-badge" style="background:#FFFBEB; color:#F59E0B; font-size:10px;">Follow-up: ${log.followup_date || 'N/A'}</span>
+                    </td>
+                `;
+                container.appendChild(tr);
+            });
+        }
+    </script>
+</body>
+</html>

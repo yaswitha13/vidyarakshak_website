@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - VidhyaRakshak</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="desktop-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+            <div>
+                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
+                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Admin</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="admin_dashboard.html" class="sidebar-item active stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                Dashboard
+            </a>
+            <a href="admin_students.html" class="sidebar-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                Students
+            </a>
+            <a href="admin_teachers.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                Teachers
+            </a>
+            <a href="admin_alerts.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                Alerts
+            </a>
+            <a href="admin_profile.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                My Profile
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="sidebar-logout" onclick="clearSession()">
+                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Institute Overview</h1>
+
+        </div>
+
+        <!-- App-Style Desktop Metric Grid -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px;">
+            
+            <!-- Total Students -->
+            <div style="background: #F0F9FF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(56, 189, 248, 0.2); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+                <div style="width: 48px; height: 48px; background: #3B82F6; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <div>
+                    <h2 id="valTotalStudents" style="font-size: 28px; font-weight: 700; color: #0F172A; margin: 0 0 4px 0;">0</h2>
+                    <p style="color: #475569; font-size: 14px; margin: 0; font-weight: 500;">Total Students</p>
+                </div>
+            </div>
+            
+            <!-- High Risk -->
+            <div style="background: #FEF2F2; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(248, 113, 113, 0.2); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+                <div style="width: 48px; height: 48px; background: #EF4444; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14l5-5 5 5z"/></svg>
+                </div>
+                <div>
+                    <h2 id="valHighRisk" style="font-size: 28px; font-weight: 700; color: #0F172A; margin: 0 0 4px 0;">0</h2>
+                    <p style="color: #475569; font-size: 14px; margin: 0; font-weight: 500;">High Risk</p>
+                </div>
+            </div>
+
+            <!-- Teacher Count -->
+            <div style="background: #FAF5FF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(192, 132, 252, 0.2); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+                <div style="width: 48px; height: 48px; background: #A855F7; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div>
+                    <h2 id="valTeacherCount" style="font-size: 28px; font-weight: 700; color: #0F172A; margin: 0 0 4px 0;">0</h2>
+                    <p style="color: #475569; font-size: 14px; margin: 0; font-weight: 500;">Teacher Count</p>
+                </div>
+            </div>
+
+            <!-- Low Risk -->
+            <div style="background: #F0FDF4; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(74, 222, 128, 0.2); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+                <div style="width: 48px; height: 48px; background: #10B981; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                    <h2 id="valLowRisk" style="font-size: 28px; font-weight: 700; color: #0F172A; margin: 0 0 4px 0;">0</h2>
+                    <p style="color: #475569; font-size: 14px; margin: 0; font-weight: 500;">Low Risk</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent High Risk List Formatted as Widget -->
+        <div style="background: #F8FAFC; border-radius: 20px; padding: 20px 24px; border: 1px solid #E2E8F0; display: flex; align-items: center; gap: 20px; margin-bottom: 20px; transition: 0.2s;">
+            <div style="width: 44px; height: 44px; background: #FEF2F2; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #DC2626;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </div>
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 4px 0; font-size: 16px; color: #0F172A; font-weight: 700;">Recent High Risk Students</h3>
+                <p style="margin: 0; color: #64748B; font-size: 14px;" id="highRiskSubText">No high risk students found.</p>
+            </div>
+            <a href="admin_students.html" style="color: #4F46E5; font-size: 14px; font-weight: 700; text-decoration: none; padding: 8px 16px;">View All</a>
+        </div>
+
+        <!-- Counseling Records Formatted as Widget -->
+        <div style="background: white; border-radius: 20px; padding: 20px 24px; border: 1px solid #E2E8F0; display: flex; align-items: center; gap: 20px; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.05); cursor: pointer; transition: 0.2s;" onclick="window.location.href='admin_counseling.html'">
+            <div style="width: 44px; height: 44px; background: #3B82F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.1C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.1.25.1.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-.9zm-1 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+            </div>
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 4px 0; font-size: 16px; color: #0F172A; font-weight: 700;">Counseling Records</h3>
+                <p style="margin: 0; color: #64748B; font-size: 14px;">View and manage student sessions</p>
+            </div>
+            <div style="color: #94A3B8;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+        </div>
+
+        <!-- Create Parent Account Formatted as Widget -->
+        <div style="background: white; border-radius: 20px; padding: 20px 24px; border: 1px solid #E2E8F0; display: flex; align-items: center; gap: 20px; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.05); cursor: pointer; transition: 0.2s; margin-top: 20px;" onclick="window.location.href='signup.html'">
+            <div style="width: 44px; height: 44px; background: #3B82F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 4px 0; font-size: 16px; color: #0F172A; font-weight: 700;">Create Parent Account</h3>
+                <p style="margin: 0; color: #64748B; font-size: 14px;">Set up access for guardians</p>
+            </div>
+            <div style="color: #94A3B8;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const session = requireAuth('Admin');
+            if(!session) return;
+            
+            try {
+                // Fetch dynamic stats from backend
+                const stats = await apiRequest('/student-stats', 'GET');
+                const teachers = await apiRequest('/get-teachers', 'GET');
+                
+                if(stats) {
+                    document.getElementById('valTotalStudents').textContent = stats.total_students || 0;
+                    document.getElementById('valHighRisk').textContent = stats.high_risk_count || 0;
+                    document.getElementById('valLowRisk').textContent = stats.low_risk_count || 0;
+                }
+                if(teachers && Array.isArray(teachers)) {
+                    document.getElementById('valTeacherCount').textContent = teachers.length;
+                }
+
+                // Fetch recent alerts for the widget
+                const alerts = await apiRequest('/api/alerts/all', 'GET');
+                const highRiskText = document.getElementById('highRiskSubText');
+                
+                if(alerts && alerts.length > 0) {
+                    const highRiskAlerts = alerts.filter(a => a.priority === 'High');
+                    if(highRiskAlerts.length > 0) {
+                        highRiskText.textContent = `${highRiskAlerts.length} high priority alert(s) needing attention.`;
+                        highRiskText.style.color = '#EF4444';
+                        highRiskText.style.fontWeight = '600';
+                    } else {
+                        highRiskText.textContent = 'No high risk students found.';
+                    }
+                } else {
+                    highRiskText.textContent = 'No high risk students found.';
+                }
+
+            } catch (e) {
+                console.error("Failed to load dashboard stats", e);
+                const highRiskText = document.getElementById('highRiskSubText');
+                if(highRiskText) {
+                    highRiskText.textContent = 'Failed to load data. Ensure backend is running.';
+                    highRiskText.style.color = '#EF4444';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

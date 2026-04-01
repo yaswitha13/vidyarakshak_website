@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Vidhyarakshak</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .profile-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .avatar-section {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .avatar-circle {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: #EFF6FF;
+            color: #3B82F6;
+            font-size: 36px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #475569;
+        }
+    </style>
+</head>
+<body class="desktop-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+            <div>
+                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
+                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Teacher Portal</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="teacher_dashboard.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                Dashboard
+            </a>
+            <a href="teacher_students.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                My Students
+            </a>
+            <a href="teacher_attendance.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Attendance
+            </a>
+            <a href="teacher_airisk.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                AI Risk Analysis
+            </a>
+            <a href="teacher_alerts.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                Alerts
+            </a>
+            <a href="teacher_counseling.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                Counseling
+            </a>
+            <a href="teacher_profile.html" class="sidebar-item active stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                Profile
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="sidebar-logout" onclick="clearSession()">
+                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="dashboard-header" style="margin-bottom: 24px;">
+            <h1 class="dashboard-title">Profile</h1>
+            <p style="color: var(--text-muted); font-size: 15px; margin-top: 4px;">Manage your account settings</p>
+        </div>
+
+        <div id="alertMsg"></div>
+
+        <div style="display: grid; grid-template-columns: 320px 1fr; gap: 32px; align-items: start; max-width: 1000px;">
+            <!-- Left Column: Avatar & Quick Actions -->
+            <div>
+                <div class="profile-card" style="text-align: center; margin-bottom: 24px; padding: 40px 24px;">
+                    <div class="avatar-circle" id="avatarInitial" style="width: 100px; height: 100px; font-size: 40px; border: 2px solid #E2E8F0; margin-bottom: 16px; font-weight: 400; display: inline-flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto;">T</div>
+                    <h2 style="font-size: 22px; color: #1E293B; margin-bottom: 6px; font-weight: 700;" id="sideName">Teacher</h2>
+                    <div style="font-size: 14px; color: #3B82F6; font-weight: 600; background: #EFF6FF; padding: 6px 12px; border-radius: 20px; display: inline-block;">
+                        <span id="roleText">Class Teacher</span> — <span id="sideClass">-</span>
+                    </div>
+                </div>
+
+                <div class="profile-card" style="padding: 0; overflow: hidden; border-color: #FECACA;">
+                    <button onclick="clearSession()" style="width: 100%; border: none; outline: none; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 20px; cursor: pointer; transition: background 0.2s; background: white;" onmouseenter="this.style.backgroundColor='#FEF2F2'" onmouseleave="this.style.backgroundColor='white'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        <span style="font-size: 15px; color: #EF4444; font-weight: 600;">Sign Out</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column: Settings Groups -->
+            <div>
+                <!-- Section: ACCOUNT -->
+                <div style="margin-bottom: 24px;">
+                    <div style="font-size: 12px; font-weight: 700; color: #94A3B8; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; margin-left: 12px;">Account</div>
+                    <div class="profile-card" style="padding: 0; overflow: hidden;">
+                        
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #F1F5F9; cursor: pointer; transition: background 0.2s;" onmouseenter="this.style.backgroundColor='#F8FAFC'" onmouseleave="this.style.backgroundColor='transparent'" onclick="toggleEditForm()">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                <span style="font-size: 15px; color: #1E293B; font-weight: 500;">Edit Profile</span>
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" id="editChevron" fill="none" stroke="#CBD5E1" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </div>
+
+                        <div id="editFormContainer" style="display: none; padding: 24px; background: #F8FAFC; border-bottom: 1px solid #F1F5F9;">
+                            <form id="profileForm" onsubmit="handleProfileUpdate(event)">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Full Name</label>
+                                        <div class="input-wrapper" style="background: white; height: 42px;">
+                                            <input type="text" id="name" class="form-input" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email Address (Locked 🔒)</label>
+                                        <div class="input-wrapper" style="background: #e2e8f0; height: 42px; border-color:transparent;">
+                                            <input type="email" id="email" class="form-input" disabled style="color: #64748B;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-grid" style="margin-top: 16px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number</label>
+                                        <div class="input-wrapper" style="background: white; height: 42px;">
+                                            <input type="tel" id="phone" class="form-input">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Gender</label>
+                                        <div class="input-wrapper" style="background: white; height: 42px; padding: 0;">
+                                            <select id="gender" class="form-select" style="height: 100%; border:none; background:transparent;">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-grid" style="margin-top: 16px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Teacher ID (Locked 🔒)</label>
+                                        <div class="input-wrapper" style="background: #e2e8f0; height: 42px; border-color:transparent;">
+                                            <input type="text" id="teacherId" class="form-input" disabled style="color: #64748B;">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">School Code (Locked 🔒)</label>
+                                        <div class="input-wrapper" style="background: #e2e8f0; height: 42px; border-color:transparent;">
+                                            <input type="text" id="schoolCode" class="form-input" disabled style="color: #64748B;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-grid" style="margin-top: 16px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Assigned Class (Locked 🔒)</label>
+                                        <div class="input-wrapper" style="background: #e2e8f0; height: 42px; border-color:transparent;">
+                                            <input type="text" id="assignedClass" class="form-input" disabled style="color: #64748B;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display:flex; justify-content:flex-end; margin-top:24px;">
+                                    <button type="submit" class="btn btn-primary" id="submitBtn" style="width:auto; padding:0 32px; height: 40px; border-radius: 6px; font-size:14px;">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; text-decoration: none; cursor: pointer; transition: background 0.2s;" onmouseenter="this.style.backgroundColor='#F8FAFC'" onmouseleave="this.style.backgroundColor='transparent'" onclick="togglePasswordForm()">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                <span style="font-size: 15px; color: #1E293B; font-weight: 500;">Change Password</span>
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" id="passwordChevron" fill="none" stroke="#CBD5E1" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </div>
+
+                        <div id="passwordFormContainer" style="display: none; padding: 24px; background: #F8FAFC;">
+                            <form id="passwordForm" onsubmit="handleChangePassword(event)">
+                                <div class="form-group" style="margin-bottom: 16px;">
+                                    <label class="form-label">Current Password</label>
+                                    <div class="input-wrapper" style="background: white; height: 42px; position:relative;">
+                                        <input type="password" id="currentPassword" class="form-input" required style="padding-right: 40px;">
+                                        <i class="ri-eye-off-line toggle-pw" data-target="currentPassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #94a3b8;"></i>
+                                    </div>
+                                </div>
+                                <div class="form-grid" style="margin-bottom: 16px;">
+                                    <div class="form-group">
+                                        <label class="form-label">New Password</label>
+                                        <div class="input-wrapper" style="background: white; height: 42px; position:relative;">
+                                            <input type="password" id="newPassword" class="form-input" required style="padding-right: 40px;">
+                                            <i class="ri-eye-off-line toggle-pw" data-target="newPassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #94a3b8;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Confirm New Password</label>
+                                        <div class="input-wrapper" style="background: white; height: 42px; position:relative;">
+                                            <input type="password" id="confirmNewPassword" class="form-input" required style="padding-right: 40px;">
+                                            <i class="ri-eye-off-line toggle-pw" data-target="confirmNewPassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #94a3b8;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display:flex; justify-content:flex-end; margin-top:24px;">
+                                    <button type="submit" class="btn btn-primary" id="pwdSubmitBtn" style="width:auto; padding:0 32px; height: 40px; border-radius: 6px; font-size:14px;">Update Password</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: CLASSROOM -->
+                <div style="margin-bottom: 24px;">
+                    <div style="font-size: 12px; font-weight: 700; color: #94A3B8; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; margin-left: 12px;">Classroom</div>
+                    <div class="profile-card" style="padding: 0; overflow: hidden;">
+                        <a href="teacher_attendance.html" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; text-decoration: none; border-bottom: 1px solid #F1F5F9; cursor: pointer; transition: background 0.2s;" onmouseenter="this.style.backgroundColor='#F8FAFC'" onmouseleave="this.style.backgroundColor='transparent'">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                <span style="font-size: 15px; color: #1E293B; font-weight: 500;">Mark Attendance</span>
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                        
+                        <a href="teacher_students.html" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; text-decoration: none; cursor: pointer; transition: background 0.2s;" onmouseenter="this.style.backgroundColor='#F8FAFC'" onmouseleave="this.style.backgroundColor='transparent'">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5c-2.2 0-4 1.8-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                <span style="font-size: 15px; color: #1E293B; font-weight: 500;">Manage Students</span>
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Section: INFORMATION -->
+                <div style="margin-bottom: 24px;">
+                    <div style="font-size: 12px; font-weight: 700; color: #94A3B8; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; margin-left: 12px;">Information</div>
+                    <div class="profile-card" style="padding: 0; overflow: hidden;">
+                        <a href="privacy_policy.html" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #F1F5F9; cursor: pointer; transition: background 0.2s; text-decoration: none;" onmouseenter="this.style.backgroundColor='#F8FAFC'" onmouseleave="this.style.backgroundColor='transparent'">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                <span style="font-size: 15px; color: #1E293B; font-weight: 500;">Privacy Policy</span>
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                        
+                        <a href="about_app.html" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; cursor: pointer; transition: background 0.2s; text-decoration: none;" onmouseenter="this.style.backgroundColor='#F8FAFC'" onmouseleave="this.style.backgroundColor='transparent'">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                <span style="font-size: 15px; color: #1E293B; font-weight: 500;">About App</span>
+                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { 
+            requireAuth('Teacher'); 
+            loadProfile();
+        });
+
+        async function loadProfile() {
+            try {
+                const session = getSession();
+                const res = await apiRequest('/get-teacher-profile?email=' + encodeURIComponent(session.email), 'GET');
+                
+                if (res && res.name) {
+                    document.getElementById('name').value = res.name || '';
+                    document.getElementById('sideName').textContent = res.name || 'Teacher';
+                    
+                    document.getElementById('email').value = res.email || session.email;
+                    
+                    if (res.name) {
+                        document.getElementById('avatarInitial').textContent = res.name.charAt(0).toUpperCase();
+                    }
+
+                    document.getElementById('teacherId').value = res.teacher_id || '';
+                    document.getElementById('schoolCode').value = res.school_code || '';
+                    
+                    document.getElementById('assignedClass').value = res.class_assigned || '';
+                    document.getElementById('sideClass').textContent = res.class_assigned || '-';
+                    
+                    document.getElementById('phone').value = res.phone || '';
+                    document.getElementById('gender').value = res.gender || 'Male';
+                }
+            } catch (e) {
+                console.error(e);
+                showAlert('alertMsg', 'Failed to load profile data.', 'error');
+            }
+        }
+
+        async function handleProfileUpdate(e) {
+            e.preventDefault();
+            
+            const nameVal = document.getElementById('name').value.trim();
+            if (!/^[a-zA-Z\s]{3,}$/.test(nameVal)) {
+                showAlert('alertMsg', 'Username (Name) must contain only letters, spaces, and be at least 3 characters long.', 'error');
+                return;
+            }
+
+            const phoneVal = document.getElementById('phone').value.trim();
+            const phoneRegex = /^[6-9]\d{9}$/;
+            if (!phoneRegex.test(phoneVal)) {
+                showAlert('alertMsg', 'The phone number should consist of 10 digits and start from 6 to 9.', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            btn.textContent = 'Saving...';
+            btn.disabled = true;
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const gender = document.getElementById('gender').value;
+
+            try {
+                const session = getSession();
+                const reqBody = {
+                    old_email: session.email,
+                    email: session.email, // email is locked
+                    name,
+                    phone,
+                    gender
+                };
+
+                const response = await apiRequest('/update-teacher-profile', 'POST', reqBody);
+                
+                if (response.success) {
+                    showAlert('alertMsg', 'Profile updated successfully!', 'success');
+                    document.getElementById('sideName').textContent = name;
+                    document.getElementById('avatarInitial').textContent = name.charAt(0).toUpperCase();
+
+                    btn.textContent = 'Save Changes';
+                    btn.disabled = false;
+                } else {
+                    showAlert('alertMsg', response.message || 'Failed to update profile.', 'error');
+                    btn.textContent = 'Save Changes';
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                showAlert('alertMsg', error.message || 'Server error.', 'error');
+                btn.textContent = 'Save Changes';
+                btn.disabled = false;
+            }
+        }
+    
+        function toggleEditForm() {
+            const container = document.getElementById('editFormContainer');
+            const chevron = document.getElementById('editChevron');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                chevron.innerHTML = '<polyline points="18 15 12 9 6 15"></polyline>';
+            } else {
+                container.style.display = 'none';
+                chevron.innerHTML = '<polyline points="9 18 15 12 9 6"></polyline>';
+            }
+        }
+        function togglePasswordForm() {
+            const container = document.getElementById('passwordFormContainer');
+            const chevron = document.getElementById('passwordChevron');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                chevron.innerHTML = '<polyline points="18 15 12 9 6 15"></polyline>';
+            } else {
+                container.style.display = 'none';
+                chevron.innerHTML = '<polyline points="9 18 15 12 9 6"></polyline>';
+            }
+        }
+
+        async function handleChangePassword(e) {
+            e.preventDefault();
+            const btn = document.getElementById('pwdSubmitBtn');
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+            
+            if (newPassword !== confirmNewPassword) {
+                showAlert('alertMsg', 'New passwords do not match!', 'error');
+                return;
+            }
+
+            const passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{8,}$/;
+            if (!passwordPattern.test(newPassword)) {
+                showAlert('alertMsg', 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.', 'error');
+                return;
+            }
+
+            btn.textContent = 'Updating...';
+            btn.disabled = true;
+
+            try {
+                const session = getSession();
+                const reqBody = {
+                    email: session.email,
+                    role: session.role,
+                    current_password: document.getElementById('currentPassword').value,
+                    new_password: newPassword
+                };
+
+                const response = await apiRequest('/change-password', 'POST', reqBody);
+                
+                if (response.success || response.success === undefined) { 
+                    showAlert('alertMsg', response.message || 'Password updated successfully!', 'success');
+                    document.getElementById('passwordForm').reset();
+                    togglePasswordForm();
+                } else {
+                    showAlert('alertMsg', response.message || 'Failed to update password.', 'error');
+                }
+            } catch (error) {
+                showAlert('alertMsg', error.message || 'Server error.', 'error');
+            } finally {
+                btn.textContent = 'Update Password';
+                btn.disabled = false;
+            }
+        }
+        document.querySelectorAll('.toggle-pw').forEach(toggleBtn => {
+            toggleBtn.addEventListener('click', function () {
+                const targetInput = document.getElementById(this.getAttribute('data-target'));
+                const type = targetInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                targetInput.setAttribute('type', type);
+                this.classList.toggle('ri-eye-line');
+                this.classList.toggle('ri-eye-off-line');
+                this.style.color = type === 'text' ? 'var(--primary)' : '#94a3b8';
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Vidhyarakshak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background-color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .dashboard-container { max-width: 1100px; margin: 0 auto; width: 100%; padding: 40px 32px; }
+
+        .dash-header-web { margin-bottom: 32px; }
+        .dash-title { font-size: 32px; font-weight: 800; color: #0f172a; margin: 0; }
+        .dash-subtitle { font-size: 16px; color: #64748b; font-weight: 500; margin-top: 6px; }
+
+        .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+
+        .web-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; }
+        .card-title { font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 32px 0; }
+
+        /* Parent Details */
+        .parent-header { display: flex; align-items: center; gap: 24px; margin-bottom: 40px; position:relative;}
+        .parent-avatar { width: 96px; height: 96px; background: #a855f7; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 44px; color: white; box-shadow: 0 10px 25px rgba(168, 85, 247, 0.25); }
+        .parent-info h3 { font-size: 26px; font-weight: 800; color: #0f172a; margin: 0 0 4px 0; }
+        .parent-info p { font-size: 16px; color: #64748b; margin: 0; font-weight:500;}
+        .edit-btn { position: absolute; right: 0; top: 0; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; color: #64748b; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor:pointer; transition: 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.03);}
+        .edit-btn:hover { border-color: #cbd5e1; color: #0f172a; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.05);}
+
+        .contact-info { display: flex; flex-direction: column; gap: 28px; border-top: 1px solid #f1f5f9; padding-top: 40px;}
+        .contact-item { display: flex; align-items: center; gap: 20px; }
+        .contact-icon { font-size: 24px; color: #94a3b8; }
+        .contact-detail p.label { font-size: 14px; color: #64748b; font-weight: 600; margin: 0; }
+        .contact-detail p.value { font-size: 16px; color: #0f172a; font-weight: 700; margin: 0; margin-top:2px;}
+
+        /* Child Details */
+        .child-content { display: flex; flex-direction: column; gap: 24px; }
+        .child-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid #f1f5f9;}
+        .child-row:last-child { border-bottom: none; padding-bottom: 0;}
+        .child-label { font-size: 16px; color: #64748b; font-weight: 600; }
+        .child-value { font-size: 16px; color: #0f172a; font-weight: 800; }
+        
+        .badge-attendance { background: #dcfce7; color: #16a34a; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 16px; min-width: 60px; text-align:center;}
+        .badge-risk { background: #dcfce7; color: #16a34a; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;}
+
+        @media (max-width: 1024px) {
+            .profile-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="desktop-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+            <div>
+                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
+                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Parent Portal</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="parent_dashboard.html" class="sidebar-item stroke-icon">
+                <i class="ri-home-4-line" style="font-size: 20px; margin-right: 12px;"></i> Dashboard
+            </a>
+            <a href="parent_alerts.html" class="sidebar-item stroke-icon">
+                <i class="ri-notification-3-line" style="font-size: 20px; margin-right: 12px;"></i> Alerts
+            </a>
+            <a href="parent_counseling.html" class="sidebar-item stroke-icon">
+                <i class="ri-discuss-line" style="font-size: 20px; margin-right: 12px;"></i> Counseling
+            </a>
+            <a href="parent_profile.html" class="sidebar-item active stroke-icon">
+                <i class="ri-user-settings-line" style="font-size: 20px; margin-right: 12px;"></i> Profile
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="sidebar-logout" onclick="clearSession()">
+                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
+                    <i class="ri-logout-box-r-line" style="font-size: 16px;"></i>
+                </div>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <div class="dashboard-container">
+            <div class="dash-header-web">
+                <h1 class="dash-title">Profile</h1>
+                <p class="dash-subtitle">Manage your account settings</p>
+            </div>
+
+            <div class="profile-grid">
+                <!-- Parent Card -->
+                <div class="web-card">
+                    <div class="parent-header">
+                        <div class="parent-avatar"><i class="ri-user-smile-fill"></i></div>
+                        <div class="parent-info">
+                            <h3 id="parentName">Loading...</h3>
+                            <p>Guardian</p>
+                        </div>
+                        <button class="edit-btn" onclick="openEditModal()"><i class="ri-pencil-line"></i></button>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="ri-mail-line"></i></div>
+                            <div class="contact-detail">
+                                <p class="label">Email</p>
+                                <p class="value" id="parentEmail">--</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="ri-smartphone-line"></i></div>
+                            <div class="contact-detail">
+                                <p class="label">Phone</p>
+                                <p class="value" id="parentPhone">--</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Child Information Card -->
+                <div class="web-card">
+                    <h2 class="card-title">Child Information</h2>
+                    <div class="child-content">
+                        <div class="child-row">
+                            <span class="child-label">Name</span>
+                            <span class="child-value" id="childName">--</span>
+                        </div>
+                        <div class="child-row">
+                            <span class="child-label">Class</span>
+                            <span class="child-value" id="childClass">--</span>
+                        </div>
+                        <div class="child-row">
+                            <span class="child-label">Roll Number</span>
+                            <span class="child-value" id="childRoll">--</span>
+                        </div>
+                        <div class="child-row">
+                            <span class="child-label">Attendance</span>
+                            <span class="badge-attendance" id="childAttendance">--%</span>
+                        </div>
+                        <div class="child-row">
+                            <span class="child-label">Risk Level</span>
+                            <span class="badge-risk" id="childRisk">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 32px; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); border: 1px solid #e2e8f0;">
+                <h2 class="card-title">App Information</h2>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <p style="font-weight: 700; color: #0f172a; margin:0 0 4px 0;">VidyaRakshak Web Portal</p>
+                        <p style="color:#64748b; margin:0;">Version 2.7.4 (Build 4120)</p>
+                    </div>
+                    <div>
+                        <a href="index.html" style="color: #2563eb; font-weight:600; text-decoration:none;">View Terms & Privacy</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Edit Profile Modal (Optional/Hidden for now) -->
+        <div id="editModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center;">
+            <div style="background:white; padding: 32px; border-radius: 20px; width:100%; max-width:400px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+                <h3 style="margin:0 0 24px 0; font-weight:800;">Update Contact</h3>
+                <div style="margin-bottom: 20px;">
+                    <label style="display:block; font-size:14px; font-weight:700; color:#475569; margin-bottom:8px;">Phone Number</label>
+                    <input type="text" id="editPhone" style="width:100%; padding:12px 16px; border-radius:12px; border:1px solid #cbd5e1; outline:none;" />
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:12px;">
+                    <button onclick="document.getElementById('editModal').style.display='none'" style="padding:10px 20px; border-radius:10px; border:none; background:#f1f5f9; cursor:pointer; font-weight:600;">Cancel</button>
+                    <button onclick="saveProfile()" style="padding:10px 20px; border-radius:10px; border:none; background:#2563eb; color:white; cursor:pointer; font-weight:600;">Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const session = requireAuth('Parent');
+            if(!session) return;
+
+            try {
+                const roll_no = session.email; 
+                const school_code = session.schoolCode;
+                if (!school_code) throw new Error("Missing school code in session");
+                
+                const student = await apiRequest(`/api/student/${school_code}/${roll_no}`, 'GET');
+                
+                if (student) {
+                    // Populate Parent Details
+                    const pName = student.parent_name || 'Guardian';
+                    document.getElementById('parentName').textContent = pName;
+                    
+                    document.getElementById('parentEmail').textContent = student.parent_email || 'Not Provided';
+                    document.getElementById('parentPhone').textContent = student.mobile_number || 'Not Provided';
+
+                    // Populate Child Details
+                    document.getElementById('childName').textContent = student.name || 'Unknown';
+                    document.getElementById('childClass').textContent = student.class_name || '--';
+                    document.getElementById('childRoll').textContent = student.roll_no || '--';
+                    
+                    const attPerc = student.attendance_percentage || 0;
+                    const attBadge = document.getElementById('childAttendance');
+                    attBadge.textContent = `${attPerc}%`;
+                    if(attPerc >= 75) {
+                        attBadge.style.background = '#dcfce7'; attBadge.style.color = '#16a34a';
+                    } else if(attPerc >= 50) {
+                        attBadge.style.background = '#fef3c7'; attBadge.style.color = '#d97706';
+                    } else {
+                        attBadge.style.background = '#fee2e2'; attBadge.style.color = '#dc2626';
+                    }
+
+                    const riskLevel = student.risk_level || 'LOW';
+                    const riskBadge = document.getElementById('childRisk');
+                    riskBadge.textContent = riskLevel;
+                    if(riskLevel.toUpperCase() === 'LOW') {
+                        riskBadge.style.background = '#dcfce7'; riskBadge.style.color = '#16a34a';
+                    } else if(riskLevel.toUpperCase() === 'MEDIUM') {
+                        riskBadge.style.background = '#fef3c7'; riskBadge.style.color = '#d97706';
+                    } else {
+                        riskBadge.style.background = '#fee2e2'; riskBadge.style.color = '#dc2626';
+                    }
+                }
+
+            } catch (e) {
+                console.error("Profile Error:", e);
+                document.getElementById('parentName').textContent = "Guardian";
+            }
+        });
+
+        function openEditModal() {
+            document.getElementById('editPhone').value = document.getElementById('parentPhone').textContent;
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        async function saveProfile() {
+            const newPhone = document.getElementById('editPhone').value;
+            
+            if (!/^[6-9]\d{9}$/.test(newPhone)) {
+                alert("The phone number should consist of 10 digits and start from 6 to 9.");
+                return;
+            }
+
+            const session = getSession();
+            try {
+                // We use the existing update API endpoint for Parent
+                await apiRequest(`/api/student/${session.schoolCode}/${session.email}/parent`, 'POST', {
+                    mobile_number: newPhone
+                });
+                document.getElementById('parentPhone').textContent = newPhone;
+                document.getElementById('editModal').style.display = 'none';
+            } catch(e) {
+                alert("Failed to update profile: " + e.message);
+            }
+        }
+
+        async function handleParentChangePassword(e) {
+            e.preventDefault();
+            const btn = document.getElementById('pwdSubmitBtn');
+            const alertMsg = document.getElementById('alertMsgParent');
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+            
+            alertMsg.style.display = 'block';
+
+            if (newPassword !== confirmNewPassword) {
+                alertMsg.textContent = 'New passwords do not match!';
+                alertMsg.style.backgroundColor = '#fee2e2';
+                alertMsg.style.color = '#b91c1c';
+                return;
+            }
+
+            const passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{8,}$/;
+            if (!passwordPattern.test(newPassword)) {
+                alertMsg.textContent = 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.';
+                alertMsg.style.backgroundColor = '#fee2e2';
+                alertMsg.style.color = '#b91c1c';
+                return;
+            }
+
+            btn.textContent = 'Updating...';
+            btn.disabled = true;
+
+            try {
+                const session = getSession();
+                const schoolCode = session.schoolCode;
+                const reqBody = {
+                    email: session.email,
+                    role: 'Parent',
+                    school_code: schoolCode,
+                    current_password: document.getElementById('currentPassword').value,
+                    new_password: newPassword
+                };
+
+                const response = await apiRequest('/change-password', 'POST', reqBody);
+                
+                if (response.success || response.success === undefined) { 
+                    alertMsg.textContent = response.message || 'Password updated successfully!';
+                    alertMsg.style.backgroundColor = '#dcfce7';
+                    alertMsg.style.color = '#15803d';
+                    document.getElementById('parentPasswordForm').reset();
+                } else {
+                    alertMsg.textContent = response.message || 'Failed to update password.';
+                    alertMsg.style.backgroundColor = '#fee2e2';
+                    alertMsg.style.color = '#b91c1c';
+                }
+            } catch (error) {
+                alertMsg.textContent = error.message || 'Server error.';
+                alertMsg.style.backgroundColor = '#fee2e2';
+                alertMsg.style.color = '#b91c1c';
+            } finally {
+                btn.textContent = 'Update Password';
+                btn.disabled = false;
+                setTimeout(() => { alertMsg.style.display = 'none'; }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Alerts - Vidhyarakshak</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="desktop-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+            <div>
+                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
+                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Admin</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="admin_dashboard.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                Dashboard
+            </a>
+            <a href="admin_students.html" class="sidebar-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                Students
+            </a>
+            <a href="admin_teachers.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                Teachers
+            </a>
+            <a href="admin_alerts.html" class="sidebar-item active stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                Alerts
+            </a>
+            <a href="admin_profile.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                My Profile
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="sidebar-logout" onclick="clearSession()">
+                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" style="background-color: #F8FAFC; padding: 40px; min-height: 100vh;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px;">
+            <div>
+                <h1 style="font-size: 26px; font-weight: 800; color: #0F172A; margin: 0 0 8px 0;">System Alerts</h1>
+                <p style="color: #64748B; font-size: 15px; margin: 0;">Monitor student risk alerts</p>
+            </div>
+            <button class="btn btn-outline" style="height: 40px; padding: 0 16px; border-radius: 8px; font-weight: 700; cursor: pointer; border: 1px solid #E2E8F0; background: white; color: #0F172A;" onclick="fetchGlobalAlerts()">
+                Refresh Alerts
+            </button>
+        </div>
+
+        <!-- 4 Metric Cards Grid -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 40px;">
+            <!-- Blue Card: Total Alerts -->
+            <div style="background: #EFF6FF; border-radius: 16px; padding: 24px; border: 1px solid #BFDBFE;">
+                <div style="width: 44px; height: 44px; background: #3B82F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                </div>
+                <div style="font-size: 24px; font-weight: 800; color: #0F172A; margin-bottom: 4px;" id="valTotalAlerts">0</div>
+                <div style="color: #64748B; font-size: 13px; font-weight: 500;">Total Alerts</div>
+            </div>
+            
+            <!-- Red Card: High Risk -->
+            <div style="background: #FEF2F2; border-radius: 16px; padding: 24px; border: 1px solid #FECACA;">
+                <div style="width: 44px; height: 44px; background: #EF4444; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="12 2 22 20 2 20"></polygon></svg>
+                </div>
+                <div style="font-size: 24px; font-weight: 800; color: #0F172A; margin-bottom: 4px;" id="valHighRisk">0</div>
+                <div style="color: #64748B; font-size: 13px; font-weight: 500;">High Risk</div>
+            </div>
+
+            <!-- Yellow Card: Medium Risk -->
+            <div style="background: #FFFBEB; border-radius: 16px; padding: 24px; border: 1px solid #FDE68A;">
+                <div style="width: 44px; height: 44px; background: #F59E0B; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="12 2 22 20 2 20"></polygon></svg> 
+                </div>
+                <div style="font-size: 24px; font-weight: 800; color: #0F172A; margin-bottom: 4px;" id="valMediumRisk">0</div>
+                <div style="color: #64748B; font-size: 13px; font-weight: 500;">Medium Risk</div>
+            </div>
+
+            <!-- Green Card: Low Risk -->
+            <div style="background: #DCFCE7; border-radius: 16px; padding: 24px; border: 1px solid #A7F3D0;">
+                <div style="width: 44px; height: 44px; background: #10B981; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div style="font-size: 24px; font-weight: 800; color: #0F172A; margin-bottom: 4px;" id="valLowRisk">0</div>
+                <div style="color: #64748B; font-size: 13px; font-weight: 500;">Low Risk</div>
+            </div>
+        </div>
+
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin-bottom: 24px;">Recent Alerts</h2>
+        <div id="alertMsg"></div>
+
+        <!-- Alerts Table Container -->
+        <div id="alertsTableWrapper" style="background: white; border-radius: 16px; border: 1px solid #E2E8F0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="background: #F8FAFC; border-bottom: 1px solid #E2E8F0;">
+                            <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Date</th>
+                            <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Student</th>
+                            <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Roll No</th>
+                            <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Class</th>
+                            <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Teacher</th>
+                            <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Alert Type</th>
+                            <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Message</th>
+                            <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase; text-align: center;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alertsTableBody">
+                        <tr><td colspan="8" style="padding: 48px; text-align: center; color: #94A3B8;">Loading alerts...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            requireAuth('Admin');
+            fetchGlobalAlerts();
+            fetchStudentStats();
+        });
+
+        async function fetchStudentStats() {
+            try {
+                const stats = await apiRequest('/student-stats', 'GET');
+                if(stats) {
+                    document.getElementById('valHighRisk').textContent = stats.high_risk_count || 0;
+                    document.getElementById('valMediumRisk').textContent = stats.medium_risk_count || 0;
+                    document.getElementById('valLowRisk').textContent = stats.low_risk_count || 0;
+                }
+            } catch (e) {
+                console.error("Failed to load generic stats", e);
+            }
+        }
+
+        async function fetchGlobalAlerts() {
+            try {
+                const alerts = await apiRequest('/api/alerts/all', 'GET');
+                renderAlerts(alerts);
+            } catch (e) {
+                console.error(e);
+                const wrapper = document.getElementById('alertsTableWrapper');
+                if (wrapper) wrapper.innerHTML = `<p style="padding: 24px; color: #EF4444; background: white; border-radius: 16px;">Failed to connect to backend.</p>`;
+            }
+        }
+
+        function renderAlerts(alerts) {
+            const tbody = document.getElementById('alertsTableBody');
+            if(!tbody) return;
+            
+            tbody.innerHTML = '';
+            
+            if(!alerts || alerts.length === 0) {
+                document.getElementById('valTotalAlerts').textContent = '0';
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #64748B; padding: 48px; background: white;"><span style="font-size: 3rem; display:block; margin-bottom:12px;">🛡️</span><strong>Institution Secure</strong><br/>No active global alerts.</td></tr>`;
+                return;
+            }
+
+            document.getElementById('valTotalAlerts').textContent = alerts.length;
+
+            alerts.forEach(alert => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #F1F5F9';
+                tr.style.transition = 'background-color 0.2s';
+                
+                tr.onmouseenter = () => tr.style.backgroundColor = '#F8FAFC';
+                tr.onmouseleave = () => tr.style.backgroundColor = 'transparent';
+
+                const statusHtml = `<span style="background-color: #FEE2E2; color: #DC2626; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase;">Not Seen</span>`;
+
+                tr.innerHTML = `
+                    <td style="padding: 16px 24px; color: #475569; font-size: 14px; white-space: nowrap;">${alert.date || 'Unknown Date'}</td>
+                    <td style="padding: 16px 24px; font-weight: 600; color: #0F172A; font-size: 14px; white-space: nowrap;">${alert.student_name || 'Unknown'}</td>
+                    <td style="padding: 16px 24px; color: #64748B; font-size: 14px; white-space: nowrap;">${alert.roll_number || '-'}</td>
+                    <td style="padding: 16px 24px; color: #64748B; font-size: 14px; white-space: nowrap;">${alert.class_name || '-'}</td>
+                    <td style="padding: 16px 24px; color: #3B82F6; font-weight: 600; font-size: 14px; white-space: nowrap;">${alert.teacher_name || 'Unknown Teacher'}</td>
+                    <td style="padding: 16px 24px; color: #0F172A; font-weight: 500; font-size: 14px; white-space: nowrap;">${alert.alert_type || 'Warning'}</td>
+                    <td style="padding: 16px 24px; color: #475569; font-size: 14px; max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${alert.message || ''}">${alert.message || 'Immediate review required.'}</td>
+                    <td style="padding: 16px 24px; text-align: center;">${statusHtml}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function deleteAlert(id) {
+            try {
+                await apiRequest(`/api/alerts/${id}`, 'DELETE');
+                showAlert('alertMsg', 'Alert Deleted.', 'success');
+                fetchGlobalAlerts();
+            } catch(e) {
+                showAlert('alertMsg', e.message || 'Failed to delete alert', 'error');
+            }
+        }
+    </script>
+</body>
+</html>

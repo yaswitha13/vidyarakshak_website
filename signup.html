@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidyaRakshak - Create Account for Parent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root { 
+            --primary: #2563EB; 
+            --primary-dark: #1D4ED8; 
+            --text-main: #0F172A; 
+            --font-main: 'Plus Jakarta Sans', sans-serif; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); }
+        body { 
+            display: flex; 
+            min-height: 100vh; 
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); 
+            color: var(--text-main); 
+            align-items: center; 
+            justify-content: center; 
+            padding: 20px; 
+        }
+        
+        .auth-container { 
+            display: flex; 
+            flex-direction: column;
+            width: 100%;
+            max-width: 420px; 
+            background: #ffffff; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
+            padding: 40px 32px;
+            align-items: center;
+        }
+        
+        .brand-header { 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            margin-bottom: 24px; 
+        }
+        
+        .brand-logo-glow { 
+            width: 64px; 
+            height: 64px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 12px;
+        }
+        
+        .brand-logo-glow img { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 50%; 
+            object-fit: contain; 
+        }
+        
+        .brand-text h1 { 
+            font-size: 22px; 
+            font-weight: 800; 
+            color: #1E293B; 
+            letter-spacing: -0.5px; 
+            line-height: 1.1; 
+            text-align: center;
+        }
+        
+        .form-title { 
+            margin-bottom: 24px; 
+            text-align: center;
+            width: 100%;
+        }
+        
+        .form-title h2 { 
+            font-size: 20px; 
+            font-weight: 700; 
+            color: #0F172A; 
+            letter-spacing: -0.5px; 
+        }
+        
+        form { width: 100%; }
+        
+        .input-group { 
+            margin-bottom: 16px; 
+            width: 100%;
+        }
+        
+        .input-field { 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            background: #F8FAFC; 
+            border: 1.5px solid #E2E8F0; 
+            border-radius: 12px; 
+            transition: 0.3s; 
+        }
+        
+        .input-field i.icon-left { 
+            position: absolute; 
+            left: 16px; 
+            font-size: 18px; 
+            color: #94A3B8; 
+            transition: 0.3s; 
+        }
+        
+        .input-field input { 
+            width: 100%; 
+            height: 48px; 
+            padding: 0 16px 0 44px; 
+            border: none; 
+            background: transparent; 
+            font-size: 15px; 
+            font-weight: 500; 
+            color: var(--text-main); 
+            outline: none; 
+            border-radius: 12px;
+        }
+        
+        .input-field input::placeholder { color: #94A3B8; }
+        
+        .input-field:focus-within { 
+            border-color: var(--primary); 
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); 
+        }
+        
+        .input-field:focus-within i.icon-left { color: var(--primary); }
+        
+        .btn-submit { 
+            width: 100%; 
+            height: 48px; 
+            margin-top: 8px; 
+            background: linear-gradient(to right, var(--primary), #3B82F6); 
+            color: white; 
+            font-size: 16px; 
+            font-weight: 700; 
+            border: none; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); 
+            transition: all 0.3s ease; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        
+        .btn-submit:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3); 
+        }
+        
+        .login-act { 
+            text-align: center; 
+            margin-top: 24px; 
+            font-size: 14px; 
+            color: #64748B; 
+            font-weight: 500;
+        }
+        
+        .login-act a { 
+            color: var(--primary); 
+            font-weight: 700; 
+            text-decoration: none; 
+            transition: 0.2s; 
+        }
+        
+        .login-act a:hover { 
+            color: var(--primary-dark); 
+            text-decoration: underline; 
+        }
+        
+        #alertMsg { 
+            border-radius: 10px; 
+            margin-bottom: 16px; 
+            padding: 12px 16px; 
+            font-size: 14px; 
+            font-weight: 500; 
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        
+        <div class="brand-header">
+            <div class="brand-logo-glow"><img src="assets/logo.png" alt="Logo"></div>
+            <div class="brand-text"><h1>VidhyaRakshaka</h1></div>
+        </div>
+        
+        <div class="form-title">
+            <h2>Create Account for Parent</h2>
+        </div>
+        
+        <div id="alertMsg"></div>
+        
+        <form id="signupForm" onsubmit="handleSignup(event)">
+            
+            <div class="input-group">
+                <div class="input-field">
+                    <i class="ri-building-4-line icon-left"></i>
+                    <input type="number" id="schoolCode" required placeholder="School Code (e.g. 1102)">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <div class="input-field">
+                    <i class="ri-id-card-line icon-left" id="emailIcon"></i>
+                    <input type="text" id="email" required placeholder="Roll Number">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <div class="input-field">
+                    <i class="ri-lock-password-line icon-left"></i>
+                    <input type="password" id="password" required placeholder="Create Password" minlength="8" style="padding-right: 44px;">
+                    <i class="ri-eye-off-line toggle-pw" data-target="password" style="position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;"></i>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <div class="input-field">
+                    <i class="ri-shield-check-line icon-left"></i>
+                    <input type="password" id="confirmPassword" required placeholder="Confirm Password" style="padding-right: 44px;">
+                    <i class="ri-eye-off-line toggle-pw" data-target="confirmPassword" style="position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;"></i>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-submit" id="submitBtn">
+                Create Account
+            </button>
+        </form>
+        
+        <!-- Login Link Removed -->
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        const rollInput = document.getElementById('email');
+        const schoolInput = document.getElementById('schoolCode');
+        const submitBtn = document.getElementById('submitBtn');
+        const alertMsg = document.getElementById('alertMsg');
+
+        // --- REAL-TIME VALIDATION ---
+        async function checkParentExists() {
+            const roll = rollInput.value.trim();
+            const school = schoolInput.value.trim();
+
+            if (roll.length < 4 || !school) {
+                rollInput.style.borderColor = '#E2E8F0';
+                return;
+            }
+
+            try {
+                const response = await apiRequest(`/api/check-parent-exists/${school}/${roll}`, 'GET');
+                if (response.exists) {
+                    showAlert('alertMsg', 'roll_no already exists', 'error');
+                    rollInput.style.borderColor = '#EF4444';
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.5';
+                } else {
+                    // Check if other alerts are present before clearing
+                    if (alertMsg.textContent === 'A parent account already exists for this roll number.') {
+                        alertMsg.textContent = '';
+                        alertMsg.style.display = 'none';
+                    }
+                    rollInput.style.borderColor = '#10B981';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }
+            } catch (e) {
+                console.error("Check failed", e);
+            }
+        }
+
+        rollInput.addEventListener('input', checkParentExists);
+        schoolInput.addEventListener('input', checkParentExists);
+
+        async function handleSignup(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn'); 
+            const alertMsg = document.getElementById('alertMsg');
+            
+            const role = 'Parent'; 
+            const schoolCode = document.getElementById('schoolCode').value;
+            const rollNoInput = document.getElementById('email').value; 
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) { 
+                showAlert('alertMsg', 'Passwords do not match.', 'error'); 
+                return; 
+            }
+
+            const passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{8,}$/;
+            if (!passwordPattern.test(password)) {
+                showAlert('alertMsg', 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.', 'error');
+                return;
+            }
+            
+            btn.innerHTML = 'Processing... <i class="ri-loader-4-line ri-spin"></i>'; 
+            btn.disabled = true;
+            
+            try {
+                const payload = { full_name: "Parent of " + rollNoInput, roll_no: rollNoInput, password: password, confirm_password: confirmPassword, role: role, school_code: schoolCode };
+                const response = await apiRequest('/signup', 'POST', payload);
+                showAlert('alertMsg', response.message || 'Registration successful. Redirecting...', 'success');
+                setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+            } catch (error) {
+                showAlert('alertMsg', error.message || 'Signup failed.', 'error');
+                btn.innerHTML = 'Create Account'; 
+                btn.disabled = false;
+            }
+        }
+        
+        document.querySelectorAll('.toggle-pw').forEach(toggleBtn => {
+            toggleBtn.addEventListener('click', function () {
+                const targetInput = document.getElementById(this.getAttribute('data-target'));
+                const type = targetInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                targetInput.setAttribute('type', type);
+                this.classList.toggle('ri-eye-line');
+                this.classList.toggle('ri-eye-off-line');
+                this.style.color = type === 'text' ? 'var(--primary)' : '#94a3b8';
+            });
+        });
+    </script>
+</body>
+</html>

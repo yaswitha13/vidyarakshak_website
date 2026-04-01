@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - Vidhyarakshak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .dashboard-container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 32px; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Dashboard Header */
+        .dash-header-web { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .dash-title { font-size: 28px; font-weight: 800; color: #0f172a; margin: 0; }
+        .dash-subtitle { font-size: 15px; color: #64748b; font-weight: 500; margin-top: 4px; }
+
+        /* Profile Banner - Web Style */
+        .profile-banner {
+            background: linear-gradient(135deg, #2563EB, #1D4ED8);
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-banner::after {
+            content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
+            background: radial-gradient(circle at top right, rgba(255,255,255,0.15) 0%, transparent 70%);
+        }
+        .banner-left { display: flex; align-items: center; gap: 24px; z-index: 1; }
+        .user-avatar {
+            width: 88px; height: 88px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center; font-size: 40px; color: white; border: 2px solid rgba(255,255,255,0.3); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .banner-info h2 { font-size: 32px; font-weight: 800; margin-bottom: 8px; color: white; }
+        .banner-info p { font-size: 16px; opacity: 0.9; margin: 0; font-weight: 500; }
+        
+        .banner-right { z-index: 1; text-align: right; }
+        .attendance-badge-web {
+            background: white; color: #1e293b; padding: 16px 28px; border-radius: 20px;
+            display: inline-flex; align-items: center; gap: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        .att-score { font-size: 42px; font-weight: 800; color: #2563EB; line-height: 1; }
+        .att-meta { display: flex; flex-direction: column; text-align: left; }
+        .att-label { font-size: 13px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+        .att-status { font-size: 16px; font-weight: 700; }
+
+        /* Web Stats Grid */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;
+        }
+        .stat-card {
+            background: white; border-radius: 20px; padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid #f1f5f9;
+            display: flex; align-items: center; gap: 24px; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(0,0,0,0.05); }
+        .stat-icon {
+            width: 68px; height: 68px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 30px; flex-shrink: 0;
+        }
+        .icon-blue { background: #eff6ff; color: #2563eb; }
+        .icon-green { background: #f0fdf4; color: #16a34a; }
+        .icon-red { background: #fef2f2; color: #dc2626; }
+        
+        .stat-info .stat-val { font-size: 36px; font-weight: 800; color: #0f172a; margin-bottom: 4px; line-height: 1;}
+        .stat-info .stat-label { font-size: 15px; font-weight: 600; color: #64748b; }
+
+        /* Web Recent Alerts List */
+        .web-panel {
+            background: white; border-radius: 20px; padding: 32px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid #f1f5f9;
+        }
+        .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f1f5f9;}
+        .panel-title { font-size: 22px; font-weight: 800; color: #0f172a; margin: 0; }
+        .panel-action { color: #2563eb; font-weight: 700; text-decoration: none; font-size: 14px; padding: 10px 20px; background: #eff6ff; border-radius: 10px; transition: 0.2s;}
+        .panel-action:hover { background: #dbeafe; }
+
+        .web-alert-item {
+            display: flex; align-items: center; justify-content: space-between; padding: 24px;
+            border: 1px solid #f1f5f9; border-radius: 16px; margin-bottom: 16px; transition: 0.2s;
+        }
+        .web-alert-item:hover { border-color: #cbd5e1; background: #f8fafc; }
+        .web-alert-item:last-child { margin-bottom: 0; }
+        
+        .alert-main { display: flex; align-items: center; gap: 20px; flex-grow: 1; min-width: 0; }
+        .alert-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;}
+        .ai-red { background: #fef2f2; color: #dc2626; }
+        .ai-blue { background: #eff6ff; color: #2563eb; }
+        
+        .alert-content h4 { font-size: 18px; font-weight: 700; margin: 0 0 6px 0; color: #0f172a; }
+        .alert-content p { font-size: 15px; color: #475569; margin: 0; line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 600px;}
+        
+        .alert-meta { text-align: right; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; }
+        .meta-sender { font-size: 13px; font-weight: 700; color: #475569; background: #f1f5f9; padding: 6px 12px; border-radius: 8px; display: inline-block; border: 1px solid #e2e8f0; }
+        .meta-time { font-size: 13px; color: #94a3b8; font-weight: 600; display: flex; align-items: center; gap: 6px; justify-content: flex-end;}
+
+        @media (max-width: 1024px) {
+            .profile-banner { flex-direction: column; align-items: flex-start; gap: 32px; }
+            .banner-right { width: 100%; text-align: left; }
+            .attendance-badge-web { width: 100%; justify-content: space-between; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .web-alert-item { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .alert-meta { text-align: left; flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
+            .alert-content p { white-space: normal; overflow: visible; text-overflow: clip; max-width: 100%; }
+        }
+    </style>
+</head>
+<body class="desktop-layout" style="background-color: #f8fafc;">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+            <div>
+                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
+                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Parent Portal</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="parent_dashboard.html" class="sidebar-item active stroke-icon">
+                <i class="ri-home-4-line" style="font-size: 20px; margin-right: 12px;"></i> Dashboard
+            </a>
+            <a href="parent_alerts.html" class="sidebar-item stroke-icon">
+                <i class="ri-notification-3-line" style="font-size: 20px; margin-right: 12px;"></i> Alerts
+            </a>
+            <a href="parent_counseling.html" class="sidebar-item stroke-icon">
+                <i class="ri-discuss-line" style="font-size: 20px; margin-right: 12px;"></i> Counseling
+            </a>
+            <a href="parent_profile.html" class="sidebar-item stroke-icon">
+                <i class="ri-user-settings-line" style="font-size: 20px; margin-right: 12px;"></i> Profile
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="sidebar-logout" onclick="clearSession()">
+                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
+                    <i class="ri-logout-box-r-line" style="font-size: 16px;"></i>
+                </div>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <div class="dashboard-container">
+            
+            <div class="dash-header-web">
+                <div>
+                    <h1 class="dash-title">Child Dashboard</h1>
+                    <p class="dash-subtitle">Real-time oversight of academic metrics and alerts</p>
+                </div>
+            </div>
+
+            <!-- Profile Web Banner -->
+            <div class="profile-banner">
+                <div class="banner-left">
+                    <div class="user-avatar"><i class="ri-user-smile-fill"></i></div>
+                    <div class="banner-info">
+                        <h2 id="studentName">Loading...</h2>
+                        <p id="studentMeta">Class: -- &nbsp;|&nbsp; Roll No: --</p>
+                    </div>
+                </div>
+                <div class="banner-right">
+                    <div class="attendance-badge-web">
+                        <div class="att-score" id="attBadgeScore">--%</div>
+                        <div class="att-meta">
+                            <span class="att-label">Attendance</span>
+                            <span class="att-status" id="attBadgeStatus" style="color:#16a34a;">Evaluating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web 3-Column Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon icon-blue"><i class="ri-calendar-event-fill"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-val" id="valTotal">--</div>
+                        <div class="stat-label">Total Classes</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon icon-green"><i class="ri-checkbox-circle-fill"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-val" id="valPresent">--</div>
+                        <div class="stat-label">Present Days</div>
+                    </div>
+                </div>
+                <div class="stat-card" style="border-bottom: 3px solid #fef2f2;">
+                    <div class="stat-icon icon-red"><i class="ri-close-circle-fill"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-val" id="valAbsent">--</div>
+                        <div class="stat-label">Absent Days</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Counseling Section (Web) -->
+            <div id="webCounselingSection" style="display: none; background: #eff6ff; border-radius: 20px; padding: 24px; margin-bottom: 32px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid #bfdbfe; display: flex; align-items: center; gap: 20px;">
+                <div style="width: 56px; height: 56px; border-radius: 16px; background: white; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(37,99,235,0.1);">
+                    <i class="ri-calendar-event-fill"></i>
+                </div>
+                <div>
+                    <div style="font-size: 15px; font-weight: 700; color: #1e3a8a; margin-bottom: 4px;">Next Counseling Date</div>
+                    <div id="webNextCounseling" style="font-size: 18px; font-weight: 800; color: #2563eb;">--</div>
+                </div>
+            </div>
+
+            <!-- Web Recent Alerts Panel -->
+            <div class="web-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Recent Alerts</h3>
+                    <a href="parent_alerts.html" class="panel-action">View Full History <i class="ri-arrow-right-line" style="margin-left:4px;"></i></a>
+                </div>
+                
+                <div class="alert-list-wrapper" id="alertsContainer">
+                    <div style="padding: 40px; text-align: center; color: #94a3b8; font-weight: 500;">
+                        <i class="ri-loader-4-line ri-spin" style="font-size: 24px;"></i><br>Fetching alerts...
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const session = requireAuth('Parent');
+            if(!session) return;
+
+            try {
+                // The session stores {email: rollNumber, role: 'Parent'} based on our login mapping
+                const roll_no = session.email; 
+                const school_code = session.schoolCode; 
+                
+                if (!school_code) {
+                    console.error("Missing school code in session");
+                    document.getElementById('studentName').textContent = "Incomplete Session";
+                    return;
+                }
+                
+                // Fetch Student Data
+                const student = await apiRequest(`/api/student/${school_code}/${roll_no}`, 'GET');
+                
+                if (student) {
+                    document.getElementById('studentName').textContent = student.name || 'Unknown Student';
+                    document.getElementById('studentMeta').textContent = `Class: ${student.class_name || '--'} | Roll No: ${student.roll_no || roll_no}`;
+                    
+                    const attPerc = student.attendance_percentage || 0;
+                    document.getElementById('attBadgeScore').textContent = `${attPerc}%`;
+                    
+                    const badgeStatusText = document.getElementById('attBadgeStatus');
+                    const badgeScoreText = document.getElementById('attBadgeScore');
+                    
+                    if (attPerc >= 75) {
+                        badgeStatusText.textContent = 'Excellent';
+                        badgeStatusText.style.color = '#16a34a';
+                        badgeScoreText.style.color = '#16a34a';
+                    } else if (attPerc >= 50) {
+                        badgeStatusText.textContent = 'Requires Attention';
+                        badgeStatusText.style.color = '#d97706';
+                        badgeScoreText.style.color = '#d97706';
+                    } else {
+                        badgeStatusText.textContent = 'Critical Alert';
+                        badgeStatusText.style.color = '#dc2626';
+                        badgeScoreText.style.color = '#dc2626';
+                    }
+
+                    document.getElementById('valTotal').textContent = student.total_classes || 0;
+                    document.getElementById('valPresent').textContent = student.present_days || 0;
+                    document.getElementById('valAbsent').textContent = student.absent_days || 0;
+                }
+
+                // Fetch Recent Alerts
+                const alerts = await apiRequest(`/api/alerts/student/${school_code}/${roll_no}`, 'GET');
+                const alertsContainer = document.getElementById('alertsContainer');
+                alertsContainer.innerHTML = '';
+
+                if (alerts && alerts.length > 0) {
+                    const recentAlerts = alerts.slice(0, 4); // Show top 4 for web view
+                    
+                    recentAlerts.forEach(alert => {
+                        let isHighPriority = alert.priority === 'High';
+                        
+                        const typeLow = (alert.alert_type || '').toLowerCase();
+                        if (typeLow.includes('attendance') || typeLow.includes('warning') || typeLow.includes('critical')) {
+                            isHighPriority = true;
+                        }
+
+                        const iconClass = isHighPriority ? 'ai-red' : 'ai-blue';
+                        const alertIcon = isHighPriority ? '<i class="ri-error-warning-fill"></i>' : '<i class="ri-information-fill"></i>';
+
+                        const alertHtml = `
+                        <div class="web-alert-item" style="${isHighPriority ? 'border: 2px solid #fca5a5; background: #fff1f2; box-shadow: 0 4px 12px rgba(220,38,38,0.08);' : 'box-shadow: 0 4px 12px rgba(0,0,0,0.03);'}">
+                            <div class="alert-main">
+                                <div class="alert-icon ${iconClass}">${alertIcon}</div>
+                                <div class="alert-content">
+                                    <h4 style="${isHighPriority ? 'color: #dc2626;' : ''}">${alert.alert_type || 'Notification'}</h4>
+                                    <p>${alert.message || '--'}</p>
+                                </div>
+                            </div>
+                            <div class="alert-meta">
+                                <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                                    <div class="meta-sender" style="${isHighPriority ? 'background: #fecaca; color: #991b1b; border: none;' : ''}"><i class="ri-user-3-fill" style="margin-right:4px;"></i> Sent by: <strong>${alert.sent_by || 'Unknown'}</strong></div>
+                                </div>
+                                <div class="meta-time"><i class="ri-time-line"></i> ${alert.date || '--'}</div>
+                            </div>
+                        </div>
+                        `;
+                        alertsContainer.innerHTML += alertHtml;
+                    });
+                } else {
+                    alertsContainer.innerHTML = `
+                        <div style="padding: 60px 20px; text-align: center;">
+                            <div style="font-size: 48px; color: #cbd5e1; margin-bottom: 16px;"><i class="ri-checkbox-circle-fill" style="color: #10b981;"></i></div>
+                            <h4 style="font-size: 18px; color: #0f172a; margin: 0 0 8px 0; font-weight: 700;">All Clear</h4>
+                            <p style="color: #64748b; margin: 0; font-size: 15px;">No recent alerts. Everything looks great!</p>
+                        </div>
+                    `;
+                }
+
+                // Fetch Next Counseling Date
+                try {
+                    const counselingRecords = await apiRequest(`/get-counseling?roll_no=${roll_no}&school_code=${school_code}`, 'GET');
+                    let latestFollowup = "";
+                    if (counselingRecords && counselingRecords.length > 0) {
+                        for (let i = 0; i < counselingRecords.length; i++) {
+                            const followup = counselingRecords[i].followup_date;
+                            if (followup && followup !== "null" && followup !== "") {
+                                latestFollowup = followup;
+                                break;
+                            }
+                        }
+                    }
+                    if (latestFollowup) {
+                        document.getElementById('webCounselingSection').style.display = 'flex';
+                        document.getElementById('webNextCounseling').textContent = latestFollowup;
+                    } else {
+                        document.getElementById('webCounselingSection').style.display = 'none';
+                    }
+                } catch (e) {
+                    document.getElementById('webCounselingSection').style.display = 'none';
+                }
+
+            } catch (e) {
+                console.error("Dashboard Error:", e);
+                document.getElementById('studentName').textContent = "Data unavailable";
+                document.getElementById('alertsContainer').innerHTML = "<div style='color:#dc2626; padding: 20px; font-weight: 500; text-align:center;'>Failed to load alerts. Check network.</div>";
+            }
+        });
+    </script>
+</body>
+</html>

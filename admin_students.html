@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Student Directory - Vidhyarakshak</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="desktop-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+            <div>
+                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
+                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Admin</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="admin_dashboard.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                Dashboard
+            </a>
+            <a href="admin_students.html" class="sidebar-item active">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                Students
+            </a>
+            <a href="admin_teachers.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                Teachers
+            </a>
+            <a href="admin_alerts.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                Alerts
+            </a>
+            <a href="admin_profile.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                My Profile
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="sidebar-logout" onclick="clearSession()">
+                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <div style="padding: 16px 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+                <div>
+                    <h1 style="font-size: 24px; font-weight: 700; color: #0F172A; margin: 0 0 4px 0;">Students</h1>
+                    <p style="color: #64748B; font-size: 14px; margin: 0;">Manage and monitor all students</p>
+                </div>
+
+                <!-- Website Style Filters -->
+                <div style="display: flex; gap: 16px; align-items: center;">
+                    <span style="color: #64748B; font-size: 14px; font-weight: 500;">Filter by:</span>
+                    <select id="filterRisk" style="padding: 10px 16px; border: 1px solid #E2E8F0; border-radius: 8px; background-color: white; font-size: 14px; color: #1E293B; font-weight: 500; outline: none; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.05); min-width: 150px;">
+                        <option value="ALL">All Risk Levels</option>
+                        <option value="HIGH">High Risk</option>
+                        <option value="MEDIUM">Medium Risk</option>
+                        <option value="LOW">Low Risk</option>
+                    </select>
+
+                    <select id="filterClass" style="padding: 10px 16px; border: 1px solid #E2E8F0; border-radius: 8px; background-color: white; font-size: 14px; color: #1E293B; font-weight: 500; outline: none; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.05); min-width: 150px;">
+                        <option value="ALL">All Classes</option>
+                        <option value="1st Class">1st Class</option>
+                        <option value="2nd Class">2nd Class</option>
+                        <option value="3rd Class">3rd Class</option>
+                        <option value="4th Class">4th Class</option>
+                        <option value="5th Class">5th Class</option>
+                        <option value="6th Class">6th Class</option>
+                        <option value="7th Class">7th Class</option>
+                        <option value="8th Class">8th Class</option>
+                        <option value="9th Class">9th Class</option>
+                        <option value="10th Class">10th Class</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Student List Metrics -->
+            <p id="showingText" style="color: #64748B; font-size: 14px; font-weight: 500; margin: 0 0 16px 0;">Showing 0 students</p>
+
+            <!-- Student Table Container -->
+            <div id="studentsTableWrapper" style="background: white; border-radius: 16px; border: 1px solid #E2E8F0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead>
+                            <tr style="background: #F8FAFC; border-bottom: 1px solid #E2E8F0;">
+                                <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Student Name</th>
+                                <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Roll No</th>
+                                <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Class</th>
+                                <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Attendance</th>
+                                <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase;">Risk Level</th>
+                                <th style="padding: 16px 24px; font-weight: 600; color: #475569; font-size: 13px; text-transform: uppercase; text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <tr><td colspan="6" style="padding: 48px; text-align: center; color: #94A3B8;">Loading students...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Add/Edit Student Modal (Desktop Size Layout) -->
+        <div id="addStudentModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; overflow-y: auto; padding: 40px;">
+            <div style="background: white; border-radius: 20px; width: 100%; max-width: 800px; padding: 32px; position: relative;">
+                <button onclick="document.getElementById('addStudentModal').style.display='none'" style="position: absolute; top: 24px; right: 24px; background: none; border: none; cursor: pointer; color: #64748B;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <h2 style="margin: 0 0 24px 0; font-size: 24px; font-weight: 700; color: #0F172A;">Student Registration</h2>
+                
+                <form id="addStudentForm" onsubmit="handleAddStudent(event)">
+                    <h3 style="margin-bottom: 16px; font-size: 16px; color: #1E293B; font-weight: 700; border-bottom: 1px solid #E2E8F0; padding-bottom: 8px;">1. Basic Info</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Full Name *</label>
+                            <input type="text" id="name" required placeholder="Student Name" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Roll Number *</label>
+                            <input type="text" id="rollNumber" required placeholder="Ex: 101" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #FFFBEB; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Class *</label>
+                            <input type="text" id="className" required placeholder="Ex: 8" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Date of Birth *</label>
+                            <input type="date" id="dob" required style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Gender *</label>
+                            <select id="gender" required style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">School Code (Locked)</label>
+                            <input type="text" id="schoolCode" readonly style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #EDF2F7; color: #718096; cursor: not-allowed; outline: none; font-weight: 600;">
+                        </div>
+                    </div>
+
+                    <h3 style="margin-bottom: 16px; font-size: 16px; color: #1E293B; font-weight: 700; border-bottom: 1px solid #E2E8F0; padding-bottom: 8px;">2. Parent Details</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Parent/Guardian Name *</label>
+                            <input type="text" id="parentName" required placeholder="Enter parent/guardian name" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Parent Phone *</label>
+                            <input type="text" id="parentPhone" required placeholder="Enter phone number" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Parent Email</label>
+                            <input type="email" id="parentEmail" placeholder="Enter email address (optional)" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                    </div>
+
+                    <h3 style="margin-bottom: 16px; font-size: 16px; color: #1E293B; font-weight: 700; border-bottom: 1px solid #E2E8F0; padding-bottom: 8px;">3. Family Background</h3>
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Address</label>
+                        <textarea id="address" rows="2" placeholder="Enter complete address" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none; resize: vertical;"></textarea>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Annual Family Income</label>
+                            <input type="text" id="familyIncome" placeholder="e.g., Below ₹50,000/year" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Parents Education Level</label>
+                            <input type="text" id="parentsEdu" placeholder="e.g., Primary, Secondary" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Number of Siblings</label>
+                            <input type="number" id="numSiblings" value="0" min="0" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Father's Occupation</label>
+                            <input type="text" id="parentsOcc" placeholder="Enter occupation" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Home Environment</label>
+                            <select id="homeEnv" style="width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 10px; font-size: 14px; background: #F8FAFC; outline: none;">
+                                <option value="">Select Environment</option>
+                                <option value="Stable / Supportive">Stable / Supportive</option>
+                                <option value="Financial Stress">Financial Stress</option>
+                                <option value="Family Conflicts / Single Parent">Family Conflicts / Single Parent</option>
+                                <option value="Living with Relatives / Hostels">Living with Relatives / Hostels</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; justify-content: flex-end; margin-top: 16px;">
+                        <button type="button" onclick="document.getElementById('addStudentModal').style.display='none'" style="padding: 14px 24px; background: white; color: #475569; border: 1px solid #CBD5E1; border-radius: 10px; font-weight: 600; font-size: 15px; cursor: pointer;">Cancel</button>
+                        <button type="submit" id="submitBtn" style="padding: 14px 24px; background: #0F766E; color: white; border: none; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer;">Add Student</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const session = requireAuth('Admin');
+            const sc = session ? session.schoolCode : null;
+            if(sc && document.getElementById('schoolCode')) {
+                document.getElementById('schoolCode').value = sc;
+            }
+            fetchAllStudents();
+        });
+
+        let allStudents = [];
+
+        async function fetchAllStudents() {
+            try {
+                allStudents = await apiRequest('/get-students', 'GET');
+                renderCards();
+            } catch (e) {
+                console.error(e);
+                document.getElementById('studentsTableWrapper').innerHTML = `<p style="padding: 24px; color: #EF4444; background: white; border-radius: 16px;">Failed to connect to backend.</p>`;
+            }
+        }
+
+        document.getElementById('filterRisk').addEventListener('change', renderCards);
+        document.getElementById('filterClass').addEventListener('change', renderCards);
+
+        function renderCards() {
+            const listDiv = document.getElementById('studentsTableBody');
+            const showingText = document.getElementById('showingText');
+            
+            listDiv.innerHTML = '';
+            
+            if(!allStudents || allStudents.length === 0) {
+                listDiv.innerHTML = `<tr><td colspan="6" style="color: #64748B; text-align: center; padding: 48px;">No students found.</td></tr>`;
+                showingText.textContent = `Showing 0 students`;
+                return;
+            }
+
+            const activeRisk = document.getElementById('filterRisk').value;
+            const activeClass = document.getElementById('filterClass').value;
+
+            // Filter logic
+            const filtered = allStudents.filter(student => {
+                const sRisk = (student.risk_level || 'LOW').toUpperCase();
+                const sClass = (student.class_name || '').toString().toLowerCase();
+                const filterClass = activeClass.toLowerCase();
+
+                let matchesRisk = true;
+                if (activeRisk !== 'ALL') {
+                    matchesRisk = sRisk.includes(activeRisk);
+                }
+                
+                let matchesClass = true;
+                if (activeClass !== 'ALL') {
+                    // Robust normalization: extract numeric part or compare cleaned strings
+                    const normalize = (c) => c.replace(/st|nd|rd|th| class/gi, '').trim();
+                    matchesClass = normalize(sClass) === normalize(filterClass);
+                }
+                
+                return matchesRisk && matchesClass;
+            });
+
+            showingText.textContent = `Showing ${filtered.length} students`;
+
+            if(filtered.length === 0) {
+                listDiv.innerHTML = `<tr><td colspan="6" style="color: #64748B; text-align: center; padding: 48px;">No students match these filters.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(student => {
+                let riskText = (student.risk_level || 'LOW').toUpperCase();
+                let pillColor = '#166534'; // LOW = green
+                let pillBg = '#DCFCE7';
+                
+                if (riskText.includes('HIGH')) {
+                    pillColor = '#991B1B';
+                    pillBg = '#FEE2E2';
+                } else if (riskText.includes('MEDIUM')) {
+                    pillColor = '#854D0E';
+                    pillBg = '#FEF9C3';
+                }
+                
+                const initial = student.name ? student.name.charAt(0).toLowerCase() : '?';
+
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #F1F5F9';
+                tr.style.transition = 'background-color 0.2s';
+                
+                tr.onmouseenter = () => tr.style.backgroundColor = '#F8FAFC';
+                tr.onmouseleave = () => tr.style.backgroundColor = 'transparent';
+
+                tr.innerHTML = `
+                    <td style="padding: 16px 24px;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 36px; height: 36px; border-radius: 50%; background-color: #10B981; color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; flex-shrink: 0;">
+                                ${initial}
+                            </div>
+                            <span style="font-weight: 600; color: #1E293B;">${student.name || 'Unknown'}</span>
+                        </div>
+                    </td>
+                    <td style="padding: 16px 24px; color: #64748B;">${student.roll_no || 'N/A'}</td>
+                    <td style="padding: 16px 24px; color: #64748B;">${student.class_name || 'N/A'}</td>
+                    <td style="padding: 16px 24px; color: #1E293B; font-weight: 600;">${student.attendance_percentage ? student.attendance_percentage.toFixed(0) : (student.attendance || 0)}%</td>
+                    <td style="padding: 16px 24px;">
+                        <span style="background-color: ${pillBg}; color: ${pillColor}; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase;">
+                            ${riskText}
+                        </span>
+                    </td>
+                    <td style="padding: 16px 24px; text-align: center;">
+                        <button class="edit-btn" style="background: none; border: none; cursor: pointer; color: #3B82F6; font-weight: 600; font-size: 13px; padding: 6px 12px; border-radius: 6px; transition: background 0.2s;">
+                            Edit
+                        </button>
+                    </td>
+                `;
+
+                const editBtn = tr.querySelector('.edit-btn');
+                editBtn.onmouseenter = () => editBtn.style.backgroundColor = '#EFF6FF';
+                editBtn.onmouseleave = () => editBtn.style.backgroundColor = 'transparent';
+                
+                editBtn.onclick = () => {
+                    document.getElementById('addStudentModal').style.display = 'flex';
+                    document.getElementById('addStudentForm').reset();
+                    document.getElementById('submitBtn').textContent = 'Save Changes';
+                    window.isEditMode = true;
+
+                    // Populate existing data
+                    document.getElementById('name').value = student.name || '';
+                    document.getElementById('rollNumber').value = student.roll_no || '';
+                    document.getElementById('rollNumber').readOnly = true; // Roll number is the key lock
+                    document.getElementById('className').value = student.class_name || '';
+                    if(student.dob) {
+                        try {
+                            const d = new Date(student.dob.split('/').reverse().join('-'));
+                            if(!isNaN(d)) {
+                                document.getElementById('dob').value = d.toISOString().split('T')[0];
+                            }
+                        } catch(e) {}
+                    }
+                    document.getElementById('gender').value = student.gender || '';
+                    document.getElementById('parentName').value = student.parent_name || '';
+                    document.getElementById('parentPhone').value = student.mobile_number || '';
+                    document.getElementById('parentEmail').value = student.parent_email || '';
+                    document.getElementById('address').value = student.address || '';
+                    document.getElementById('familyIncome').value = student.family_income || '';
+                    document.getElementById('parentsEdu').value = student.parents_edu || '';
+                    document.getElementById('numSiblings').value = student.num_siblings || 0;
+                    document.getElementById('parentsOcc').value = student.parents_occ || '';
+                    document.getElementById('homeEnv').value = student.home_env || '';
+                };
+
+                listDiv.appendChild(tr);
+            });
+        }
+
+        async function handleAddStudent(e) {
+            e.preventDefault();
+            
+            const studentName = document.getElementById('name').value.trim();
+            if (!/^[a-zA-Z\s]{3,}$/.test(studentName)) {
+                alert('Student Name (username) must contain only letters, spaces, and be at least 3 characters long.');
+                return;
+            }
+
+            const parentPhone = document.getElementById('parentPhone').value.trim();
+            if (!/^[6-9]\d{9}$/.test(parentPhone)) {
+                alert('Phone number must be exactly 10 digits and start with 6, 7, 8, or 9.');
+                return;
+            }
+
+            const parentEmail = document.getElementById('parentEmail').value.trim().toLowerCase();
+            if (parentEmail && !parentEmail.endsWith('@gmail.com')) {
+                alert('Email must be a valid Gmail address (ending with @gmail.com).');
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            btn.textContent = 'Saving...';
+            btn.disabled = true;
+
+            let dobVal = document.getElementById('dob').value;
+            if(dobVal) {
+                const parts = dobVal.split('-');
+                dobVal = `${parts[2]}/${parts[1]}/${parts[0]}`;
+            }
+
+            const payload = {
+                name: document.getElementById('name').value,
+                roll_no: document.getElementById('rollNumber').value,
+                class_name: document.getElementById('className').value,
+                dob: dobVal,
+                gender: document.getElementById('gender').value,
+                parent_name: document.getElementById('parentName').value,
+                mobile_number: document.getElementById('parentPhone').value,
+                parent_email: document.getElementById('parentEmail').value,
+                address: document.getElementById('address').value,
+                family_income: document.getElementById('familyIncome').value,
+                parents_edu: document.getElementById('parentsEdu').value,
+                num_siblings: parseInt(document.getElementById('numSiblings').value || 0),
+                parents_occ: document.getElementById('parentsOcc').value,
+                home_env: document.getElementById('homeEnv').value,
+                school_code: document.getElementById('schoolCode').value
+            };
+
+            try {
+                // Admin can update records
+                const endpoint = window.isEditMode ? '/update-student' : '/add-student';
+                const response = await apiRequest(endpoint, 'POST', payload);
+                if (response.success || response.message) {
+                    document.getElementById('addStudentModal').style.display = 'none';
+                    fetchAllStudents(); // Refresh the grid
+                } else {
+                    alert(response.message || 'Failed to update student');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Server error while saving student.');
+            } finally {
+                btn.textContent = 'Save Changes';
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

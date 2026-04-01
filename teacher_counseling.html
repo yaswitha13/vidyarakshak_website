@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counseling Record - Vidhyarakshak</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+            width: 100%;
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 160px;
+            padding: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body class="desktop-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+            <div>
+                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
+                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Teacher Portal</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="teacher_dashboard.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                Dashboard
+            </a>
+            <a href="teacher_students.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                My Students
+            </a>
+            <a href="teacher_attendance.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Attendance
+            </a>
+            <a href="teacher_airisk.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                AI Risk Analysis
+            </a>
+            <a href="teacher_alerts.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                Alerts
+            </a>
+            <a href="teacher_counseling.html" class="sidebar-item active stroke-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                Counseling
+            </a>
+            <a href="teacher_profile.html" class="sidebar-item stroke-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                Profile
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="sidebar-logout" onclick="clearSession()">
+                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" style="background-color: #F8FAFC; padding: 40px; min-height: 100vh;">
+        
+        <div class="dashboard-header" style="margin-bottom: 32px; width: 100%;">
+            <div>
+                <h1 class="dashboard-title" style="font-size: 26px; color: #1E293B; font-weight: 700; margin-bottom: 8px;">Counseling & Behavior Record</h1>
+                <p style="color: #64748B; font-size: 15px;">Comprehensive counseling documentation and tracking</p>
+            </div>
+        </div>
+
+        <div class="form-card" style="background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border: 1px solid #F1F5F9; width: 100%;">
+            <div id="alertMsg"></div>
+
+            <form id="counselingForm" onsubmit="handleCounseling(event)">
+                <!-- Row 1 -->
+                <div style="display: flex; gap: 24px; margin-bottom: 24px;">
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Select Student *</label>
+                        <select id="rollNumber" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; appearance: none;" required>
+                            <option value="" disabled selected>Loading students...</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Selected Counseling Type *</label>
+                        <select id="counselingType" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; appearance: none;" required>
+                            <option value="" disabled selected>Select Counseling Type</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Behavioral">Behavioral</option>
+                            <option value="Attendance">Attendance</option>
+                            <option value="Personal/Emotional">Personal / Emotional</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div style="display: flex; gap: 24px; margin-bottom: 24px;">
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Primary Dropout Risk Reason *</label>
+                        <select id="dropoutReason" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; appearance: none;" required>
+                            <option value="" disabled selected>Select Dropout Reason</option>
+                            <option value="None">None / Low Risk</option>
+                            <option value="Financial">Financial Issues</option>
+                            <option value="Academic">Poor Academic Performance</option>
+                            <option value="Family">Family Circumstances</option>
+                            <option value="Health">Health Issues</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Date of Session *</label>
+                        <input type="date" id="sessionDate" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B;" required>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div style="display: flex; gap: 24px; margin-bottom: 24px;">
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Behavioral Observations *</label>
+                        <select id="behavioralObs" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; appearance: none;" required>
+                            <option value="" disabled selected>Select Behavior</option>
+                            <option value="Attentive">Attentive and Engaged</option>
+                            <option value="Distracted">Easily Distracted</option>
+                            <option value="Disruptive">Disruptive</option>
+                            <option value="Withdrawn">Withdrawn / Quiet</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Student Mood / Emotional Status *</label>
+                        <select id="studentMood" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; appearance: none;" required>
+                            <option value="" disabled selected>Select Mood</option>
+                            <option value="Positive">Positive / Cheerful</option>
+                            <option value="Anxious">Anxious / Stressed</option>
+                            <option value="Sad">Sad / Depressed</option>
+                            <option value="Angry">Angry / Frustrated</option>
+                            <option value="Neutral">Neutral / Indifferent</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Counseling Notes *</label>
+                    <textarea id="counselingNotes" placeholder="Document the counseling session: Issues identified, observations..." style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; min-height: 120px; resize: vertical;" required></textarea>
+                </div>
+
+                <!-- Row 5 -->
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Action Plan / Support Given *</label>
+                    <textarea id="actionPlan" placeholder="Describe the action plan, interventions promised..." style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; min-height: 120px; resize: vertical;" required></textarea>
+                </div>
+
+                <!-- Row 6 -->
+                <div style="display: flex; gap: 24px; margin-bottom: 24px;">
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Follow-Up Date *</label>
+                        <input type="date" id="followUpDate" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B;" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Progress Status *</label>
+                        <select id="progressStatus" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; appearance: none;" required>
+                            <option value="" disabled selected>Select Progress</option>
+                            <option value="Improving">Improving</option>
+                            <option value="Stagnant">Stagnant</option>
+                            <option value="Declining">Declining</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 8px;">Parent Involvement Status *</label>
+                        <select id="parentInvolvement" style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; font-size: 15px; color: #1E293B; appearance: none;" required>
+                            <option value="" disabled selected>Select Parent Involvement</option>
+                            <option value="Highly Involved">Highly Involved</option>
+                            <option value="Somewhat Involved">Somewhat Involved</option>
+                            <option value="Not Involved">Not Involved</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div style="display: flex; justify-content: flex-start; gap: 16px; margin-top: 32px;">
+                    <button type="submit" id="submitBtn" style="padding: 16px 32px; background: #1E293B; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.2s;">Save / Update Record</button>
+                    <button type="button" id="reminderBtn" onclick="showAlert('alertMsg', 'Follow-up reminder set!', 'success')" style="padding: 16px 32px; background: #10B981; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.2s;">Set Follow-Up Reminder</button>
+                </div>
+            </form>
+        </div>
+        
+        <div style="margin-top: 40px; display: flex; align-items: center; gap: 12px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <h2 style="font-size: 20px; color: #1E293B; font-weight: 700; margin: 0;">My Counseling Sessions</h2>
+        </div>
+        
+        <div id="historyContainer" style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px;">
+            <div style="text-align: center; grid-column: 1/-1; color: #94A3B8; font-size: 15px; padding: 40px;">
+                Loading your session history...
+            </div>
+        </div>
+        
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { 
+            requireAuth('Teacher'); 
+            const todayStr = new Date().toISOString().split('T')[0];
+            const sessionInput = document.getElementById('sessionDate');
+            sessionInput.value = todayStr;
+            
+            // Allow selecting any date for historical entry, but default to today
+            // sessionInput.setAttribute('min', todayStr); 
+            // sessionInput.setAttribute('max', todayStr);
+            
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            const followUpInput = document.getElementById('followUpDate');
+            followUpInput.setAttribute('min', tomorrowStr);
+
+            fetchStudents();
+            fetchHistory();
+        });
+
+        async function fetchHistory() {
+            const container = document.getElementById('historyContainer');
+            try {
+                const session = getSession();
+                const logs = await apiRequest(`/get-counseling?counselor_name=${encodeURIComponent(session.name || session.email)}`, 'GET');
+                
+                if (!logs || logs.length === 0) {
+                    container.innerHTML = `<div style="text-align: center; grid-column: 1/-1; color: #94A3B8; font-size: 15px; padding: 40px;">No counseling records generated yet.</div>`;
+                    return;
+                }
+
+                container.innerHTML = '';
+                const today = new Date();
+                today.setHours(0,0,0,0);
+
+                logs.sort((a,b) => new Date(b.session_date) - new Date(a.session_date)).forEach(log => {
+                    const sessionDate = new Date(log.session_date);
+                    sessionDate.setHours(0,0,0,0);
+
+                    let statusText = "Upcoming";
+                    let statusColor = "#F59E0B"; // Orange
+                    let statusBg = "#FFFBEB"; // Light Orange
+
+                    if (sessionDate.getTime() < today.getTime()) {
+                        statusText = "Completed";
+                        statusColor = "#10B981"; // Green
+                        statusBg = "#DCFCE7"; // Light Green
+                    } else if (sessionDate.getTime() === today.getTime()) {
+                        statusText = "Today";
+                        statusColor = "#8B5CF6"; // Purple
+                        statusBg = "#F5F3FF"; // Light Purple
+                    }
+
+                    const card = document.createElement('div');
+                    card.style = "background: white; border-radius: 12px; padding: 20px; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);";
+                    card.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                            <div>
+                                <h3 style="font-size:16px; color:#1E293B; margin:0;">${log.student_name}</h3>
+                                <p style="font-size:12px; color:#64748B; margin:4px 0 0 0;">${log.session_date} • ${log.counseling_type}</p>
+                            </div>
+                            <span style="background:${statusBg}; color:${statusColor}; font-size:10px; font-weight:700; padding:4px 10px; border-radius:20px; text-transform:uppercase;">${statusText}</span>
+                        </div>
+                        <div style="background:#F8FAFC; border-radius:8px; padding:12px; font-size:13px; color:#475569; border:1px solid #F1F5F9;">
+                            ${log.action_plan ? `<strong>Action Plan:</strong> ${log.action_plan}` : log.notes.substring(0, 100) + '...'}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+            } catch (e) {
+                container.innerHTML = `<div style="text-align: center; grid-column: 1/-1; color: #EF4444; font-size: 15px; padding: 40px;">Error loading history logs.</div>`;
+            }
+        }
+
+        async function fetchStudents() {
+            console.log("fetchStudents: Initiating...");
+            try {
+                const session = getSession();
+                if (!session.email || session.email === "null") {
+                    console.error("fetchStudents: No valid session.");
+                    return;
+                }
+
+                const profileRes = await apiRequest('/get-teacher-profile?email=' + encodeURIComponent(session.email), 'GET');
+                console.log("fetchStudents: Profile result:", profileRes);
+                
+                if (profileRes && (profileRes.school_code || profileRes.school) && profileRes.class_assigned) {
+                    const schoolCode = encodeURIComponent(profileRes.school_code || profileRes.school);
+                    const className = encodeURIComponent(profileRes.class_assigned);
+                    
+                    console.log(`fetchStudents: Fetching students for Class: ${profileRes.class_assigned}`);
+                    const students = await apiRequest(`/get-students?school_code=${schoolCode}&class_name=${className}`, 'GET');
+                    console.log("fetchStudents: Students from backend:", students);
+                    
+                    const studentSelect = document.getElementById('rollNumber');
+                    studentSelect.innerHTML = '<option value="" disabled selected>Select Student</option>';
+                    
+                    if (students && Array.isArray(students) && students.length > 0) {
+                        students.sort((a, b) => a.name.localeCompare(b.name)).forEach(s => {
+                            const option = document.createElement('option');
+                            option.value = s.roll_no;
+                            option.textContent = `${s.name} (${s.roll_no})`;
+                            studentSelect.appendChild(option);
+                        });
+                    } else {
+                        studentSelect.innerHTML = '<option value="" disabled selected>No students found</option>';
+                    }
+                } else {
+                    console.warn("fetchStudents: Teacher profile has missing fields.");
+                }
+            } catch (e) {
+                console.error("fetchStudents: Error:", e);
+                const studentSelect = document.getElementById('rollNumber');
+                studentSelect.innerHTML = '<option value="" disabled selected>Error loading students</option>';
+            }
+        }
+
+        async function handleCounseling(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.textContent = 'Saving...';
+            btn.disabled = true;
+
+            const roll_number = document.getElementById('rollNumber').value;
+            const dateVal = document.getElementById('sessionDate').value;
+            const cType = document.getElementById('counselingType').value;
+            const dReason = document.getElementById('dropoutReason').value;
+            const behObs = document.getElementById('behavioralObs').value;
+            const mood = document.getElementById('studentMood').value;
+            const cNotes = document.getElementById('counselingNotes').value;
+            const aPlan = document.getElementById('actionPlan').value;
+            const fDate = document.getElementById('followUpDate').value;
+            const pStatus = document.getElementById('progressStatus').value;
+            const pInvolvement = document.getElementById('parentInvolvement').value;
+
+            const combinedNotes = `Type: ${cType}\nDropout Risk: ${dReason}\nBehavior: ${behObs}\nMood: ${mood}\nNotes: ${cNotes}\nAction Plan: ${aPlan}\nFollow-Up: ${fDate}\nProgress: ${pStatus}\nParent Involvement: ${pInvolvement}`;
+
+            try {
+                const session = getSession();
+                const profileRes = await apiRequest('/get-teacher-profile?email=' + encodeURIComponent(session.email), 'GET');
+                
+                if (!profileRes || !profileRes.school_code) throw new Error('Could not identify teacher school context.');
+
+                const reqBody = {
+                    student_roll_no: roll_number,
+                    school_code: profileRes.school_code,
+                    session_date: dateVal,
+                    notes: combinedNotes,
+                    counselor_name: profileRes.name || profileRes.email,
+                    class_name: profileRes.class_assigned
+                };
+
+                const response = await apiRequest('/add-counseling', 'POST', reqBody);
+                
+                if (response.success) {
+                    showAlert('alertMsg', 'Counseling record saved!', 'success');
+                    document.getElementById('counselingForm').reset();
+                    document.getElementById('sessionDate').value = new Date().toISOString().split('T')[0];
+                    btn.textContent = 'Save / Update Record';
+                    btn.disabled = false;
+                } else {
+                    showAlert('alertMsg', response.message || 'Failed to save record.', 'error');
+                    btn.textContent = 'Save / Update Record';
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                showAlert('alertMsg', error.message || 'Server error.', 'error');
+                btn.textContent = 'Save / Update Record';
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
