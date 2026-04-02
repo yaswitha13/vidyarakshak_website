@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Parent Dashboard - Vidhyarakshak</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css' rel='stylesheet'>
+    <link rel='stylesheet' href='css/style.css'>
     <style>
         .dashboard-container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 32px; font-family: 'Plus Jakarta Sans', sans-serif; }
         
@@ -111,37 +111,37 @@
         }
     </style>
 </head>
-<body class="desktop-layout" style="background-color: #f8fafc;">
+<body class='desktop-layout' style='background-color: #f8fafc;'>
 
     <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
-            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+    <aside class='sidebar'>
+        <div class='sidebar-header' style='display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;'>
+            <div style='width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;'><img src='assets/logo.png' alt='Logo' style='width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);'></div>
             <div>
-                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
-                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Parent Portal</div>
+                <div class='sidebar-brand-title' style='margin-bottom: 2px;'>VidyaRakshak</div>
+                <div class='sidebar-brand-subtitle' style='margin: 0; font-size: 11px; letter-spacing: 0.5px;'>Parent Portal</div>
             </div>
         </div>
         
-        <nav class="sidebar-nav">
-            <a href="parent_dashboard.html" class="sidebar-item active stroke-icon">
-                <i class="ri-home-4-line" style="font-size: 20px; margin-right: 12px;"></i> Dashboard
+        <nav class='sidebar-nav'>
+            <a href='parent_dashboard.html' class='sidebar-item active stroke-icon'>
+                <i class='ri-home-4-line' style='font-size: 20px; margin-right: 12px;'></i> Dashboard
             </a>
-            <a href="parent_alerts.html" class="sidebar-item stroke-icon">
-                <i class="ri-notification-3-line" style="font-size: 20px; margin-right: 12px;"></i> Alerts
+            <a href='parent_alerts.html' class='sidebar-item stroke-icon'>
+                <i class='ri-notification-3-line' style='font-size: 20px; margin-right: 12px;'></i> Alerts
             </a>
-            <a href="parent_counseling.html" class="sidebar-item stroke-icon">
-                <i class="ri-discuss-line" style="font-size: 20px; margin-right: 12px;"></i> Counseling
+            <a href='parent_counseling.html' class='sidebar-item stroke-icon'>
+                <i class='ri-discuss-line' style='font-size: 20px; margin-right: 12px;'></i> Counseling
             </a>
-            <a href="parent_profile.html" class="sidebar-item stroke-icon">
-                <i class="ri-user-settings-line" style="font-size: 20px; margin-right: 12px;"></i> Profile
+            <a href='parent_profile.html' class='sidebar-item stroke-icon'>
+                <i class='ri-user-settings-line' style='font-size: 20px; margin-right: 12px;'></i> Profile
             </a>
         </nav>
         
-        <div class="sidebar-footer">
-            <button class="sidebar-logout" onclick="clearSession()">
-                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
-                    <i class="ri-logout-box-r-line" style="font-size: 16px;"></i>
+        <div class='sidebar-footer'>
+            <button class='sidebar-logout' onclick='clearSession()'>
+                <div style='background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;'>
+                    <i class='ri-logout-box-r-line' style='font-size: 16px;'></i>
                 </div>
                 Sign Out
             </button>
@@ -149,83 +149,83 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class='main-content'>
         
-        <div class="dashboard-container">
+        <div class='dashboard-container'>
             
-            <div class="dash-header-web">
+            <div class='dash-header-web'>
                 <div>
-                    <h1 class="dash-title">Child Dashboard</h1>
-                    <p class="dash-subtitle">Real-time oversight of academic metrics and alerts</p>
+                    <h1 class='dash-title'>Child Dashboard</h1>
+                    <p class='dash-subtitle'>Real-time oversight of academic metrics and alerts</p>
                 </div>
             </div>
 
             <!-- Profile Web Banner -->
-            <div class="profile-banner">
-                <div class="banner-left">
-                    <div class="user-avatar"><i class="ri-user-smile-fill"></i></div>
-                    <div class="banner-info">
-                        <h2 id="studentName">Loading...</h2>
-                        <p id="studentMeta">Class: -- &nbsp;|&nbsp; Roll No: --</p>
+            <div class='profile-banner'>
+                <div class='banner-left'>
+                    <div class='user-avatar'><i class='ri-user-smile-fill'></i></div>
+                    <div class='banner-info'>
+                        <h2 id='studentName'>Loading...</h2>
+                        <p id='studentMeta'>Class: -- &nbsp;|&nbsp; Roll No: --</p>
                     </div>
                 </div>
-                <div class="banner-right">
-                    <div class="attendance-badge-web">
-                        <div class="att-score" id="attBadgeScore">--%</div>
-                        <div class="att-meta">
-                            <span class="att-label">Attendance</span>
-                            <span class="att-status" id="attBadgeStatus" style="color:#16a34a;">Evaluating</span>
+                <div class='banner-right'>
+                    <div class='attendance-badge-web'>
+                        <div class='att-score' id='attBadgeScore'>--%</div>
+                        <div class='att-meta'>
+                            <span class='att-label'>Attendance</span>
+                            <span class='att-status' id='attBadgeStatus' style='color:#16a34a;'>Evaluating</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Web 3-Column Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon icon-blue"><i class="ri-calendar-event-fill"></i></div>
-                    <div class="stat-info">
-                        <div class="stat-val" id="valTotal">--</div>
-                        <div class="stat-label">Total Classes</div>
+            <div class='stats-grid'>
+                <div class='stat-card'>
+                    <div class='stat-icon icon-blue'><i class='ri-calendar-event-fill'></i></div>
+                    <div class='stat-info'>
+                        <div class='stat-val' id='valTotal'>--</div>
+                        <div class='stat-label'>Total Classes</div>
                     </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon icon-green"><i class="ri-checkbox-circle-fill"></i></div>
-                    <div class="stat-info">
-                        <div class="stat-val" id="valPresent">--</div>
-                        <div class="stat-label">Present Days</div>
+                <div class='stat-card'>
+                    <div class='stat-icon icon-green'><i class='ri-checkbox-circle-fill'></i></div>
+                    <div class='stat-info'>
+                        <div class='stat-val' id='valPresent'>--</div>
+                        <div class='stat-label'>Present Days</div>
                     </div>
                 </div>
-                <div class="stat-card" style="border-bottom: 3px solid #fef2f2;">
-                    <div class="stat-icon icon-red"><i class="ri-close-circle-fill"></i></div>
-                    <div class="stat-info">
-                        <div class="stat-val" id="valAbsent">--</div>
-                        <div class="stat-label">Absent Days</div>
+                <div class='stat-card' style='border-bottom: 3px solid #fef2f2;'>
+                    <div class='stat-icon icon-red'><i class='ri-close-circle-fill'></i></div>
+                    <div class='stat-info'>
+                        <div class='stat-val' id='valAbsent'>--</div>
+                        <div class='stat-label'>Absent Days</div>
                     </div>
                 </div>
             </div>
 
             <!-- Counseling Section (Web) -->
-            <div id="webCounselingSection" style="display: none; background: #eff6ff; border-radius: 20px; padding: 24px; margin-bottom: 32px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid #bfdbfe; display: flex; align-items: center; gap: 20px;">
-                <div style="width: 56px; height: 56px; border-radius: 16px; background: white; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(37,99,235,0.1);">
-                    <i class="ri-calendar-event-fill"></i>
+            <div id='webCounselingSection' style='display: none; background: #eff6ff; border-radius: 20px; padding: 24px; margin-bottom: 32px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid #bfdbfe; display: flex; align-items: center; gap: 20px;'>
+                <div style='width: 56px; height: 56px; border-radius: 16px; background: white; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(37,99,235,0.1);'>
+                    <i class='ri-calendar-event-fill'></i>
                 </div>
                 <div>
-                    <div style="font-size: 15px; font-weight: 700; color: #1e3a8a; margin-bottom: 4px;">Next Counseling Date</div>
-                    <div id="webNextCounseling" style="font-size: 18px; font-weight: 800; color: #2563eb;">--</div>
+                    <div style='font-size: 15px; font-weight: 700; color: #1e3a8a; margin-bottom: 4px;'>Next Counseling Date</div>
+                    <div id='webNextCounseling' style='font-size: 18px; font-weight: 800; color: #2563eb;'>--</div>
                 </div>
             </div>
 
             <!-- Web Recent Alerts Panel -->
-            <div class="web-panel">
-                <div class="panel-header">
-                    <h3 class="panel-title">Recent Alerts</h3>
-                    <a href="parent_alerts.html" class="panel-action">View Full History <i class="ri-arrow-right-line" style="margin-left:4px;"></i></a>
+            <div class='web-panel'>
+                <div class='panel-header'>
+                    <h3 class='panel-title'>Recent Alerts</h3>
+                    <a href='parent_alerts.html' class='panel-action'>View Full History <i class='ri-arrow-right-line' style='margin-left:4px;'></i></a>
                 </div>
                 
-                <div class="alert-list-wrapper" id="alertsContainer">
-                    <div style="padding: 40px; text-align: center; color: #94a3b8; font-weight: 500;">
-                        <i class="ri-loader-4-line ri-spin" style="font-size: 24px;"></i><br>Fetching alerts...
+                <div class='alert-list-wrapper' id='alertsContainer'>
+                    <div style='padding: 40px; text-align: center; color: #94a3b8; font-weight: 500;'>
+                        <i class='ri-loader-4-line ri-spin' style='font-size: 24px;'></i><br>Fetching alerts...
                     </div>
                 </div>
             </div>
@@ -234,7 +234,7 @@
 
     </main>
 
-    <script src="js/api.js"></script>
+    <script src='js/api.js'></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const session = requireAuth('Parent');
@@ -246,8 +246,8 @@
                 const school_code = session.schoolCode; 
                 
                 if (!school_code) {
-                    console.error("Missing school code in session");
-                    document.getElementById('studentName').textContent = "Incomplete Session";
+                    console.error('Missing school code in session');
+                    document.getElementById('studentName').textContent = 'Incomplete Session';
                     return;
                 }
                 
@@ -298,24 +298,24 @@
                         if (typeLow.includes('attendance') || typeLow.includes('warning') || typeLow.includes('critical')) {
                             isHighPriority = true;
                         }
-
+                        
                         const iconClass = isHighPriority ? 'ai-red' : 'ai-blue';
-                        const alertIcon = isHighPriority ? '<i class="ri-error-warning-fill"></i>' : '<i class="ri-information-fill"></i>';
+                        const alertIcon = isHighPriority ? "<i class='ri-error-warning-fill'></i>" : "<i class='ri-information-fill'></i>";
 
                         const alertHtml = `
-                        <div class="web-alert-item" style="${isHighPriority ? 'border: 2px solid #fca5a5; background: #fff1f2; box-shadow: 0 4px 12px rgba(220,38,38,0.08);' : 'box-shadow: 0 4px 12px rgba(0,0,0,0.03);'}">
-                            <div class="alert-main">
-                                <div class="alert-icon ${iconClass}">${alertIcon}</div>
-                                <div class="alert-content">
+                        <div class='web-alert-item' style="${isHighPriority ? 'border: 2px solid #fca5a5; background: #fff1f2; box-shadow: 0 4px 12px rgba(220,38,38,0.08);' : 'box-shadow: 0 4px 12px rgba(0,0,0,0.03);'}">
+                            <div class='alert-main'>
+                                <div class='alert-icon ${iconClass}'>${alertIcon}</div>
+                                <div class='alert-content'>
                                     <h4 style="${isHighPriority ? 'color: #dc2626;' : ''}">${alert.alert_type || 'Notification'}</h4>
                                     <p>${alert.message || '--'}</p>
                                 </div>
                             </div>
-                            <div class="alert-meta">
-                                <div style="display: flex; gap: 8px; justify-content: flex-end;">
-                                    <div class="meta-sender" style="${isHighPriority ? 'background: #fecaca; color: #991b1b; border: none;' : ''}"><i class="ri-user-3-fill" style="margin-right:4px;"></i> Sent by: <strong>${alert.sent_by || 'Unknown'}</strong></div>
+                            <div class='alert-meta'>
+                                <div style='display: flex; gap: 8px; justify-content: flex-end;'>
+                                    <div class='meta-sender' style="${isHighPriority ? 'background: #fecaca; color: #991b1b; border: none;' : ''}"><i class='ri-user-3-fill' style='margin-right:4px;'></i> Sent by: <strong>${alert.sent_by || 'Unknown'}</strong></div>
                                 </div>
-                                <div class="meta-time"><i class="ri-time-line"></i> ${alert.date || '--'}</div>
+                                <div class='meta-time'><i class='ri-time-line'></i> ${alert.date || '--'}</div>
                             </div>
                         </div>
                         `;
@@ -323,10 +323,10 @@
                     });
                 } else {
                     alertsContainer.innerHTML = `
-                        <div style="padding: 60px 20px; text-align: center;">
-                            <div style="font-size: 48px; color: #cbd5e1; margin-bottom: 16px;"><i class="ri-checkbox-circle-fill" style="color: #10b981;"></i></div>
-                            <h4 style="font-size: 18px; color: #0f172a; margin: 0 0 8px 0; font-weight: 700;">All Clear</h4>
-                            <p style="color: #64748b; margin: 0; font-size: 15px;">No recent alerts. Everything looks great!</p>
+                        <div style='padding: 60px 20px; text-align: center;'>
+                            <div style='font-size: 48px; color: #cbd5e1; margin-bottom: 16px;'><i class='ri-checkbox-circle-fill' style='color: #10b981;'></i></div>
+                            <h4 style='font-size: 18px; color: #0f172a; margin: 0 0 8px 0; font-weight: 700;'>All Clear</h4>
+                            <p style='color: #64748b; margin: 0; font-size: 15px;'>No recent alerts. Everything looks great!</p>
                         </div>
                     `;
                 }
@@ -334,11 +334,11 @@
                 // Fetch Next Counseling Date
                 try {
                     const counselingRecords = await apiRequest(`/get-counseling?roll_no=${roll_no}&school_code=${school_code}`, 'GET');
-                    let latestFollowup = "";
+                    let latestFollowup = '';
                     if (counselingRecords && counselingRecords.length > 0) {
                         for (let i = 0; i < counselingRecords.length; i++) {
                             const followup = counselingRecords[i].followup_date;
-                            if (followup && followup !== "null" && followup !== "") {
+                            if (followup && followup !== 'null' && followup !== '') {
                                 latestFollowup = followup;
                                 break;
                             }
@@ -355,8 +355,8 @@
                 }
 
             } catch (e) {
-                console.error("Dashboard Error:", e);
-                document.getElementById('studentName').textContent = "Data unavailable";
+                console.error('Dashboard Error:', e);
+                document.getElementById('studentName').textContent = 'Data unavailable';
                 document.getElementById('alertsContainer').innerHTML = "<div style='color:#dc2626; padding: 20px; font-weight: 500; text-align:center;'>Failed to load alerts. Check network.</div>";
             }
         });

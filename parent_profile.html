@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Profile - Vidhyarakshak</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css' rel='stylesheet'>
+    <link rel='stylesheet' href='css/style.css'>
     <style>
         body { background-color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
         .dashboard-container { max-width: 1100px; margin: 0 auto; width: 100%; padding: 40px 32px; }
@@ -49,37 +49,37 @@
         }
     </style>
 </head>
-<body class="desktop-layout">
+<body class='desktop-layout'>
 
     <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
-            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+    <aside class='sidebar'>
+        <div class='sidebar-header' style='display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;'>
+            <div style='width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;'><img src='assets/logo.png' alt='Logo' style='width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);'></div>
             <div>
-                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
-                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Parent Portal</div>
+                <div class='sidebar-brand-title' style='margin-bottom: 2px;'>VidyaRakshak</div>
+                <div class='sidebar-brand-subtitle' style='margin: 0; font-size: 11px; letter-spacing: 0.5px;'>Parent Portal</div>
             </div>
         </div>
         
-        <nav class="sidebar-nav">
-            <a href="parent_dashboard.html" class="sidebar-item stroke-icon">
-                <i class="ri-home-4-line" style="font-size: 20px; margin-right: 12px;"></i> Dashboard
+        <nav class='sidebar-nav'>
+            <a href='parent_dashboard.html' class='sidebar-item stroke-icon'>
+                <i class='ri-home-4-line' style='font-size: 20px; margin-right: 12px;'></i> Dashboard
             </a>
-            <a href="parent_alerts.html" class="sidebar-item stroke-icon">
-                <i class="ri-notification-3-line" style="font-size: 20px; margin-right: 12px;"></i> Alerts
+            <a href='parent_alerts.html' class='sidebar-item stroke-icon'>
+                <i class='ri-notification-3-line' style='font-size: 20px; margin-right: 12px;'></i> Alerts
             </a>
-            <a href="parent_counseling.html" class="sidebar-item stroke-icon">
-                <i class="ri-discuss-line" style="font-size: 20px; margin-right: 12px;"></i> Counseling
+            <a href='parent_counseling.html' class='sidebar-item stroke-icon'>
+                <i class='ri-discuss-line' style='font-size: 20px; margin-right: 12px;'></i> Counseling
             </a>
-            <a href="parent_profile.html" class="sidebar-item active stroke-icon">
-                <i class="ri-user-settings-line" style="font-size: 20px; margin-right: 12px;"></i> Profile
+            <a href='parent_profile.html' class='sidebar-item active stroke-icon'>
+                <i class='ri-user-settings-line' style='font-size: 20px; margin-right: 12px;'></i> Profile
             </a>
         </nav>
         
-        <div class="sidebar-footer">
-            <button class="sidebar-logout" onclick="clearSession()">
-                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
-                    <i class="ri-logout-box-r-line" style="font-size: 16px;"></i>
+        <div class='sidebar-footer'>
+            <button class='sidebar-logout' onclick='clearSession()'>
+                <div style='background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;'>
+                    <i class='ri-logout-box-r-line' style='font-size: 16px;'></i>
                 </div>
                 Sign Out
             </button>
@@ -87,81 +87,81 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class='main-content'>
         
-        <div class="dashboard-container">
-            <div class="dash-header-web">
-                <h1 class="dash-title">Profile</h1>
-                <p class="dash-subtitle">Manage your account settings</p>
+        <div class='dashboard-container'>
+            <div class='dash-header-web'>
+                <h1 class='dash-title'>Profile</h1>
+                <p class='dash-subtitle'>Manage your account settings</p>
             </div>
 
-            <div class="profile-grid">
+            <div class='profile-grid'>
                 <!-- Parent Card -->
-                <div class="web-card">
-                    <div class="parent-header">
-                        <div class="parent-avatar"><i class="ri-user-smile-fill"></i></div>
-                        <div class="parent-info">
-                            <h3 id="parentName">Loading...</h3>
+                <div class='web-card'>
+                    <div class='parent-header'>
+                        <div class='parent-avatar'><i class='ri-user-smile-fill'></i></div>
+                        <div class='parent-info'>
+                            <h3 id='parentName'>Loading...</h3>
                             <p>Guardian</p>
                         </div>
-                        <button class="edit-btn" onclick="openEditModal()"><i class="ri-pencil-line"></i></button>
+                        <button class='edit-btn' onclick='openEditModal()'><i class='ri-pencil-line'></i></button>
                     </div>
                     
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="ri-mail-line"></i></div>
-                            <div class="contact-detail">
-                                <p class="label">Email</p>
-                                <p class="value" id="parentEmail">--</p>
+                    <div class='contact-info'>
+                        <div class='contact-item'>
+                            <div class='contact-icon'><i class='ri-mail-line'></i></div>
+                            <div class='contact-detail'>
+                                <p class='label'>Email</p>
+                                <p class='value' id='parentEmail'>--</p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="ri-smartphone-line"></i></div>
-                            <div class="contact-detail">
-                                <p class="label">Phone</p>
-                                <p class="value" id="parentPhone">--</p>
+                        <div class='contact-item'>
+                            <div class='contact-icon'><i class='ri-smartphone-line'></i></div>
+                            <div class='contact-detail'>
+                                <p class='label'>Phone</p>
+                                <p class='value' id='parentPhone'>--</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Child Information Card -->
-                <div class="web-card">
-                    <h2 class="card-title">Child Information</h2>
-                    <div class="child-content">
-                        <div class="child-row">
-                            <span class="child-label">Name</span>
-                            <span class="child-value" id="childName">--</span>
+                <div class='web-card'>
+                    <h2 class='card-title'>Child Information</h2>
+                    <div class='child-content'>
+                        <div class='child-row'>
+                            <span class='child-label'>Name</span>
+                            <span class='child-value' id='childName'>--</span>
                         </div>
-                        <div class="child-row">
-                            <span class="child-label">Class</span>
-                            <span class="child-value" id="childClass">--</span>
+                        <div class='child-row'>
+                            <span class='child-label'>Class</span>
+                            <span class='child-value' id='childClass'>--</span>
                         </div>
-                        <div class="child-row">
-                            <span class="child-label">Roll Number</span>
-                            <span class="child-value" id="childRoll">--</span>
+                        <div class='child-row'>
+                            <span class='child-label'>Roll Number</span>
+                            <span class='child-value' id='childRoll'>--</span>
                         </div>
-                        <div class="child-row">
-                            <span class="child-label">Attendance</span>
-                            <span class="badge-attendance" id="childAttendance">--%</span>
+                        <div class='child-row'>
+                            <span class='child-label'>Attendance</span>
+                            <span class='badge-attendance' id='childAttendance'>--%</span>
                         </div>
-                        <div class="child-row">
-                            <span class="child-label">Risk Level</span>
-                            <span class="badge-risk" id="childRisk">--</span>
+                        <div class='child-row'>
+                            <span class='child-label'>Risk Level</span>
+                            <span class='badge-risk' id='childRisk'>--</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div style="margin-top: 32px; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); border: 1px solid #e2e8f0;">
-                <h2 class="card-title">App Information</h2>
-                <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style='margin-top: 32px; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); border: 1px solid #e2e8f0;'>
+                <h2 class='card-title'>App Information</h2>
+                <div style='display:flex; justify-content:space-between; align-items:center;'>
                     <div>
-                        <p style="font-weight: 700; color: #0f172a; margin:0 0 4px 0;">VidyaRakshak Web Portal</p>
-                        <p style="color:#64748b; margin:0;">Version 2.7.4 (Build 4120)</p>
+                        <p style='font-weight: 700; color: #0f172a; margin:0 0 4px 0;'>VidyaRakshak Web Portal</p>
+                        <p style='color:#64748b; margin:0;'>Version 2.7.4 (Build 4120)</p>
                     </div>
                     <div>
-                        <a href="index.html" style="color: #2563eb; font-weight:600; text-decoration:none;">View Terms & Privacy</a>
+                        <a href='index.html' style='color: #2563eb; font-weight:600; text-decoration:none;'>View Terms & Privacy</a>
                     </div>
                 </div>
             </div>
@@ -169,23 +169,23 @@
         </div>
 
         <!-- Edit Profile Modal (Optional/Hidden for now) -->
-        <div id="editModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center;">
-            <div style="background:white; padding: 32px; border-radius: 20px; width:100%; max-width:400px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                <h3 style="margin:0 0 24px 0; font-weight:800;">Update Contact</h3>
-                <div style="margin-bottom: 20px;">
-                    <label style="display:block; font-size:14px; font-weight:700; color:#475569; margin-bottom:8px;">Phone Number</label>
-                    <input type="text" id="editPhone" style="width:100%; padding:12px 16px; border-radius:12px; border:1px solid #cbd5e1; outline:none;" />
+        <div id='editModal' style='display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center;'>
+            <div style='background:white; padding: 32px; border-radius: 20px; width:100%; max-width:400px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);'>
+                <h3 style='margin:0 0 24px 0; font-weight:800;'>Update Contact</h3>
+                <div style='margin-bottom: 20px;'>
+                    <label style='display:block; font-size:14px; font-weight:700; color:#475569; margin-bottom:8px;'>Phone Number</label>
+                    <input type='text' id='editPhone' style='width:100%; padding:12px 16px; border-radius:12px; border:1px solid #cbd5e1; outline:none;' />
                 </div>
-                <div style="display:flex; justify-content:flex-end; gap:12px;">
-                    <button onclick="document.getElementById('editModal').style.display='none'" style="padding:10px 20px; border-radius:10px; border:none; background:#f1f5f9; cursor:pointer; font-weight:600;">Cancel</button>
-                    <button onclick="saveProfile()" style="padding:10px 20px; border-radius:10px; border:none; background:#2563eb; color:white; cursor:pointer; font-weight:600;">Save Changes</button>
+                <div style='display:flex; justify-content:flex-end; gap:12px;'>
+                    <button onclick="document.getElementById('editModal').style.display='none'" style='padding:10px 20px; border-radius:10px; border:none; background:#f1f5f9; cursor:pointer; font-weight:600;'>Cancel</button>
+                    <button onclick='saveProfile()' style='padding:10px 20px; border-radius:10px; border:none; background:#2563eb; color:white; cursor:pointer; font-weight:600;'>Save Changes</button>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <script src="js/api.js"></script>
+    <script src='js/api.js'></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const session = requireAuth('Parent');
@@ -194,7 +194,7 @@
             try {
                 const roll_no = session.email; 
                 const school_code = session.schoolCode;
-                if (!school_code) throw new Error("Missing school code in session");
+                if (!school_code) throw new Error('Missing school code in session');
                 
                 const student = await apiRequest(`/api/student/${school_code}/${roll_no}`, 'GET');
                 
@@ -235,8 +235,8 @@
                 }
 
             } catch (e) {
-                console.error("Profile Error:", e);
-                document.getElementById('parentName').textContent = "Guardian";
+                console.error('Profile Error:', e);
+                document.getElementById('parentName').textContent = 'Guardian';
             }
         });
 
@@ -249,7 +249,7 @@
             const newPhone = document.getElementById('editPhone').value;
             
             if (!/^[6-9]\d{9}$/.test(newPhone)) {
-                alert("The phone number should consist of 10 digits and start from 6 to 9.");
+                alert('The phone number should consist of 10 digits and start from 6 to 9.');
                 return;
             }
 
@@ -262,7 +262,7 @@
                 document.getElementById('parentPhone').textContent = newPhone;
                 document.getElementById('editModal').style.display = 'none';
             } catch(e) {
-                alert("Failed to update profile: " + e.message);
+                alert('Failed to update profile: ' + e.message);
             }
         }
 

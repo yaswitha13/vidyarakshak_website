@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Child's Alerts - Vidhyarakshak</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css' rel='stylesheet'>
+    <link rel='stylesheet' href='css/style.css'>
     <style>
         body { background-color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
         .dashboard-container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 32px; }
@@ -63,37 +63,37 @@
         }
     </style>
 </head>
-<body class="desktop-layout">
+<body class='desktop-layout'>
 
     <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header" style="display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;">
-            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;"><img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);"></div>
+    <aside class='sidebar'>
+        <div class='sidebar-header' style='display: flex; align-items: center; gap: 12px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px;'>
+            <div style='width: 44px; height: 44px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; flex-shrink: 0;'><img src='assets/logo.png' alt='Logo' style='width: 100%; height: 100%; object-fit: cover; transform: scale(1.15);'></div>
             <div>
-                <div class="sidebar-brand-title" style="margin-bottom: 2px;">VidyaRakshak</div>
-                <div class="sidebar-brand-subtitle" style="margin: 0; font-size: 11px; letter-spacing: 0.5px;">Parent Portal</div>
+                <div class='sidebar-brand-title' style='margin-bottom: 2px;'>VidyaRakshak</div>
+                <div class='sidebar-brand-subtitle' style='margin: 0; font-size: 11px; letter-spacing: 0.5px;'>Parent Portal</div>
             </div>
         </div>
         
-        <nav class="sidebar-nav">
-            <a href="parent_dashboard.html" class="sidebar-item stroke-icon">
-                <i class="ri-home-4-line" style="font-size: 20px; margin-right: 12px;"></i> Dashboard
+        <nav class='sidebar-nav'>
+            <a href='parent_dashboard.html' class='sidebar-item stroke-icon'>
+                <i class='ri-home-4-line' style='font-size: 20px; margin-right: 12px;'></i> Dashboard
             </a>
-            <a href="parent_alerts.html" class="sidebar-item active stroke-icon">
-                <i class="ri-notification-3-line" style="font-size: 20px; margin-right: 12px;"></i> Alerts
+            <a href='parent_alerts.html' class='sidebar-item active stroke-icon'>
+                <i class='ri-notification-3-line' style='font-size: 20px; margin-right: 12px;'></i> Alerts
             </a>
-            <a href="parent_counseling.html" class="sidebar-item stroke-icon">
-                <i class="ri-discuss-line" style="font-size: 20px; margin-right: 12px;"></i> Counseling
+            <a href='parent_counseling.html' class='sidebar-item stroke-icon'>
+                <i class='ri-discuss-line' style='font-size: 20px; margin-right: 12px;'></i> Counseling
             </a>
-            <a href="parent_profile.html" class="sidebar-item stroke-icon">
-                <i class="ri-user-settings-line" style="font-size: 20px; margin-right: 12px;"></i> Profile
+            <a href='parent_profile.html' class='sidebar-item stroke-icon'>
+                <i class='ri-user-settings-line' style='font-size: 20px; margin-right: 12px;'></i> Profile
             </a>
         </nav>
         
-        <div class="sidebar-footer">
-            <button class="sidebar-logout" onclick="clearSession()">
-                <div style="background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;">
-                    <i class="ri-logout-box-r-line" style="font-size: 16px;"></i>
+        <div class='sidebar-footer'>
+            <button class='sidebar-logout' onclick='clearSession()'>
+                <div style='background: rgba(239, 68, 68, 0.2); border-radius: 4px; padding: 4px; display:flex;'>
+                    <i class='ri-logout-box-r-line' style='font-size: 16px;'></i>
                 </div>
                 Sign Out
             </button>
@@ -101,30 +101,30 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class='main-content'>
         
-        <div class="dashboard-container">
-            <div class="dash-header-web">
+        <div class='dashboard-container'>
+            <div class='dash-header-web'>
                 <div>
-                    <h1 class="dash-title">Notification Center</h1>
-                    <p class="dash-subtitle">Complete history of academic and attendance alerts for your child</p>
+                    <h1 class='dash-title'>Notification Center</h1>
+                    <p class='dash-subtitle'>Complete history of academic and attendance alerts for your child</p>
                 </div>
             </div>
 
-            <div id="alertMsg"></div>
+            <div id='alertMsg'></div>
 
             <!-- Website Table Container -->
-            <div class="web-table-container">
-                <div class="table-toolbar">
-                    <h3 class="toolbar-title">Alert History</h3>
-                    <button class="btn-refresh" onclick="fetchChildAlerts()"><i class="ri-refresh-line"></i> Refresh Log</button>
+            <div class='web-table-container'>
+                <div class='table-toolbar'>
+                    <h3 class='toolbar-title'>Alert History</h3>
+                    <button class='btn-refresh' onclick='fetchChildAlerts()'><i class='ri-refresh-line'></i> Refresh Log</button>
                 </div>
                 
-                <div id="alertsContainer">
-                    <div class="status-pane">
-                        <i class="ri-loader-4-line ri-spin status-icon"></i>
-                        <h4 class="status-title">Synchronizing Data</h4>
-                        <p class="status-desc">Fetching the latest alert history...</p>
+                <div id='alertsContainer'>
+                    <div class='status-pane'>
+                        <i class='ri-loader-4-line ri-spin status-icon'></i>
+                        <h4 class='status-title'>Synchronizing Data</h4>
+                        <p class='status-desc'>Fetching the latest alert history...</p>
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
 
     </main>
 
-    <script src="js/api.js"></script>
+    <script src='js/api.js'></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             requireAuth('Parent');
@@ -144,17 +144,17 @@
                 const session = getSession();
                 const roll_no = session.email;
                 const school_code = session.schoolCode;
-                if (!school_code) throw new Error("Missing school code in session");
+                if (!school_code) throw new Error('Missing school code in session');
                 
                 const alerts = await apiRequest(`/api/alerts/student/${school_code}/${roll_no}`, 'GET');
                 renderAlerts(alerts);
             } catch (e) {
                 console.error(e);
                 document.getElementById('alertsContainer').innerHTML = `
-                    <div class="status-pane">
-                        <i class="ri-error-warning-fill status-icon" style="color: #dc2626;"></i>
-                        <h4 class="status-title">Connection Failed</h4>
-                        <p class="status-desc">Unable to retrieve alerts from the server. Please try again later.</p>
+                    <div class='status-pane'>
+                        <i class='ri-error-warning-fill status-icon' style='color: #dc2626;'></i>
+                        <h4 class='status-title'>Connection Failed</h4>
+                        <p class='status-desc'>Unable to retrieve alerts from the server. Please try again later.</p>
                     </div>
                 `;
             }
@@ -166,18 +166,18 @@
             
             if(!alerts || alerts.length === 0) {
                 container.innerHTML = `
-                    <div class="status-pane">
-                        <i class="ri-checkbox-circle-fill status-icon" style="color: #10b981;"></i>
-                        <h4 class="status-title">All Caught Up</h4>
-                        <p class="status-desc">No active alerts have been issued for your child. Everything is flowing smoothly.</p>
+                    <div class='status-pane'>
+                        <i class='ri-checkbox-circle-fill status-icon' style='color: #10b981;'></i>
+                        <h4 class='status-title'>All Caught Up</h4>
+                        <p class='status-desc'>No active alerts have been issued for your child. Everything is flowing smoothly.</p>
                     </div>`;
                 return;
             }
 
-            let cardsHtml = '<div class="alerts-grid">';
+            let cardsHtml = "<div class='alerts-grid'>";
             alerts.forEach((alert, index) => {
                 const isNew = index === 0; // Mark newest alert
-                const newBadgeHtml = isNew ? `<div style="background: #fef2f2; color: #b91c1c; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; text-transform: uppercase;">New</div>` : '';
+                const newBadgeHtml = isNew ? "<div style='background: #fef2f2; color: #b91c1c; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; text-transform: uppercase;'>New</div>" : "";
                 
                 let isHighPriority = alert.priority === 'High';
                 const typeLow = (alert.alert_type || '').toLowerCase();
@@ -186,33 +186,33 @@
                 }
 
                 const badgeClass = isHighPriority ? 'type-high' : 'type-normal';
-                const iconHtml = isHighPriority ? '<i class="ri-error-warning-fill"></i>' : '<i class="ri-notification-badge-fill"></i>';
+                const iconHtml = isHighPriority ? "<i class='ri-error-warning-fill'></i>" : "<i class='ri-notification-badge-fill'></i>";
 
                 cardsHtml += `
-                    <div class="alert-card" style="${isHighPriority ? 'background: #fff1f2; border-color: #fecaca; box-shadow: 0 4px 20px rgba(220,38,38,0.06);' : ''}">
-                        <div class="card-header">
-                            <div class="alert-type-badge ${badgeClass}">
+                    <div class='alert-card' style="${isHighPriority ? 'background: #fff1f2; border-color: #fecaca; box-shadow: 0 4px 20px rgba(220,38,38,0.06);' : ''}">
+                        <div class='card-header'>
+                            <div class='alert-type-badge ${badgeClass}'>
                                 ${iconHtml} ${alert.alert_type || 'Alert Description'}
                             </div>
                             ${newBadgeHtml}
                         </div>
                         
-                        <div class="card-body">
-                            <p class="msg-text" style="${isHighPriority ? 'color: #7f1d1d;' : ''}">${alert.message || ''}</p>
+                        <div class='card-body'>
+                            <p class='msg-text' style="${isHighPriority ? 'color: #7f1d1d;' : ''}">${alert.message || ''}</p>
                         </div>
                         
-                        <div class="card-footer" style="${isHighPriority ? 'border-top-color: #fca5a5;' : ''}">
-                            <div class="teacher-info">
-                                <div class="teacher-avatar" style="${isHighPriority ? 'background: #fca5a5; color: #7f1d1d;' : ''}">
-                                    <i class="ri-user-star-fill"></i>
+                        <div class='card-footer' style="${isHighPriority ? 'border-top-color: #fca5a5;' : ''}">
+                            <div class='teacher-info'>
+                                <div class='teacher-avatar' style="${isHighPriority ? 'background: #fca5a5; color: #7f1d1d;' : ''}">
+                                    <i class='ri-user-star-fill'></i>
                                 </div>
-                                <div class="teacher-details">
-                                    <span class="teacher-name" style="${isHighPriority ? 'color: #7f1d1d;' : ''}">${alert.sent_by || 'System Administrator'}</span>
-                                    <span class="teacher-label" style="${isHighPriority ? 'color: #991b1b;' : ''}">Sender</span>
+                                <div class='teacher-details'>
+                                    <span class='teacher-name' style="${isHighPriority ? 'color: #7f1d1d;' : ''}">${alert.sent_by || 'System Administrator'}</span>
+                                    <span class='teacher-label' style="${isHighPriority ? 'color: #991b1b;' : ''}">Sender</span>
                                 </div>
                             </div>
-                            <div class="card-date" style="${isHighPriority ? 'color: #991b1b;' : ''}">
-                                <i class="ri-time-line"></i> ${alert.date || '--'}
+                            <div class='card-date' style="${isHighPriority ? 'color: #991b1b;' : ''}">
+                                <i class='ri-time-line'></i> ${alert.date || '--'}
                             </div>
                         </div>
                     </div>

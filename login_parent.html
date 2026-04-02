@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>VidyaRakshak - Parent Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css' rel='stylesheet'>
+    <link rel='stylesheet' href='css/style.css'>
     <style>
         :root { --primary: #2563EB; --primary-dark: #1D4ED8; --text-main: #0F172A; --font-main: 'Plus Jakarta Sans', sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); }
@@ -68,60 +68,60 @@
     </style>
 </head>
 <body>
-    <div class="auth-container">
-        <div class="auth-visual">
-            <div class="visual-content">
-                <div class="brand-header">
-                    <div class="brand-logo-glow"><img src="assets/logo.png" alt="Logo"></div>
-                    <div class="brand-text"><h1>VidyaRakshak</h1><p>Protecting Education</p></div>
+    <div class='auth-container'>
+        <div class='auth-visual'>
+            <div class='visual-content'>
+                <div class='brand-header'>
+                    <div class='brand-logo-glow'><img src='assets/logo.png' alt='Logo'></div>
+                    <div class='brand-text'><h1>VidyaRakshak</h1><p>Protecting Education</p></div>
                 </div>
-                <div class="hero-statement">
+                <div class='hero-statement'>
                     <h2>Guardian<br><span>Connection Hub</span></h2>
                     <p>Stay connected with your child's academic journey and secure their future.</p>
                 </div>
             </div>
-            <div class="illustration">
-                <i class="ri-group-fill"></i>
+            <div class='illustration'>
+                <i class='ri-group-fill'></i>
             </div>
         </div>
         
-        <div class="auth-form-wrapper">
-            <a href="index.html" class="back-link"><i class="ri-arrow-left-line"></i> Back Home</a>
+        <div class='auth-form-wrapper'>
+            <a href='index.html' class='back-link'><i class='ri-arrow-left-line'></i> Back Home</a>
             
-            <div class="form-title">
+            <div class='form-title'>
                 <h2>Parent Login</h2>
                 <p>Welcome back to your parent portal.</p>
             </div>
             
-            <div id="alertMsg"></div>
+            <div id='alertMsg'></div>
             
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="input-group">
+            <form id='loginForm' onsubmit='handleLogin(event)'>
+                <div class='input-group'>
                     <label>School Code</label>
-                    <div class="input-field">
-                        <i class="ri-graduation-cap-fill" style="color: #000000;"></i>
-                        <input type="text" id="schoolCode" required placeholder="Ex: 102">
+                    <div class='input-field'>
+                        <i class='ri-graduation-cap-fill' style='color: #000000;'></i>
+                        <input type='text' id='schoolCode' required placeholder='Ex: 102'>
                     </div>
                 </div>
                 
-                <div class="input-group">
+                <div class='input-group'>
                     <label>Student Roll Number</label>
-                    <div class="input-field">
-                        <i class="ri-id-card-line"></i>
-                        <input type="text" id="email" required placeholder="Enter roll number">
+                    <div class='input-field'>
+                        <i class='ri-id-card-line'></i>
+                        <input type='text' id='email' required placeholder='Enter roll number'>
                     </div>
                 </div>
                 
-                <div class="input-group">
+                <div class='input-group'>
                     <label>Password</label>
-                    <div class="input-field">
-                        <i class="ri-lock-password-line"></i>
-                        <input type="password" id="password" required placeholder="Enter password" style="padding-right: 46px;">
-                        <i class="ri-eye-off-line toggle-pw" data-target="password" style="position: absolute; right: 16px; left: auto; cursor: pointer; color: #94a3b8;"></i>
+                    <div class='input-field'>
+                        <i class='ri-lock-password-line'></i>
+                        <input type='password' id='password' required placeholder='Enter password' style='padding-right: 46px;'>
+                        <i class='ri-eye-off-line toggle-pw' data-target='password' style='position: absolute; right: 16px; left: auto; cursor: pointer; color: #94a3b8;'></i>
                     </div>
                 </div>
                 
-                <button type="submit" class="btn-submit" id="submitBtn">
+                <button type='submit' class='btn-submit' id='submitBtn'>
                     Sign In
                 </button>
             </form>
@@ -130,7 +130,7 @@
         </div>
     </div>
 
-    <script src="js/api.js"></script>
+    <script src='js/api.js'></script>
     <script>
         async function handleLogin(e) {
             e.preventDefault();

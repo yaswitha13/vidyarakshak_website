@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Verify OTP - Vidhyarakshak</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel='stylesheet' href='css/style.css'>
     <style>
         .otp-container {
             display: flex;
@@ -30,35 +30,35 @@
     </style>
 </head>
 <body>
-    <div class="auth-container">
-        <div class="auth-card glass-panel">
-            <div class="text-center mb-6">
+    <div class='auth-container'>
+        <div class='auth-card glass-panel'>
+            <div class='text-center mb-6'>
                 <h2>OTP Verification</h2>
-                <p class="text-muted mt-4">Enter the 6-digit OTP code sent to your email.</p>
+                <p class='text-muted mt-4'>Enter the 6-digit OTP code sent to your email.</p>
             </div>
             
-            <div id="alertMsg"></div>
+            <div id='alertMsg'></div>
 
-            <form id="otpForm" onsubmit="handleVerify(event)">
-                <div class="otp-container" id="otpGroup">
-                    <input type="text" class="otp-input" maxlength="1" required data-index="1">
-                    <input type="text" class="otp-input" maxlength="1" required data-index="2">
-                    <input type="text" class="otp-input" maxlength="1" required data-index="3">
-                    <input type="text" class="otp-input" maxlength="1" required data-index="4">
-                    <input type="text" class="otp-input" maxlength="1" required data-index="5">
-                    <input type="text" class="otp-input" maxlength="1" required data-index="6">
+            <form id='otpForm' onsubmit='handleVerify(event)'>
+                <div class='otp-container' id='otpGroup'>
+                    <input type='text' class='otp-input' maxlength='1' required data-index='1'>
+                    <input type='text' class='otp-input' maxlength='1' required data-index='2'>
+                    <input type='text' class='otp-input' maxlength='1' required data-index='3'>
+                    <input type='text' class='otp-input' maxlength='1' required data-index='4'>
+                    <input type='text' class='otp-input' maxlength='1' required data-index='5'>
+                    <input type='text' class='otp-input' maxlength='1' required data-index='6'>
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-4" id="submitBtn">Verify</button>
+                <button type='submit' class='btn btn-primary mt-4' id='submitBtn'>Verify</button>
             </form>
 
-            <div class="text-center mt-6">
-                <a href="index.html" class="text-sm" style="color: var(--text-muted); font-weight: 600; text-decoration: none;">Back to Login</a>
+            <div class='text-center mt-6'>
+                <a href='index.html' class='text-sm' style='color: var(--text-muted); font-weight: 600; text-decoration: none;'>Back to Login</a>
             </div>
         </div>
     </div>
 
-    <script src="js/api.js"></script>
+    <script src='js/api.js'></script>
     <script>
         // Setup Auto-Advance for OTP Box logic parity with Android VerifyOtpActivity
         const inputs = document.querySelectorAll('.otp-input');

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>VidyaRakshak - Create Account for Parent</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css' rel='stylesheet'>
+    <link rel='stylesheet' href='css/style.css'>
     <style>
         :root { 
             --primary: #2563EB; 
@@ -186,52 +186,52 @@
     </style>
 </head>
 <body>
-    <div class="auth-container">
+    <div class='auth-container'>
         
-        <div class="brand-header">
-            <div class="brand-logo-glow"><img src="assets/logo.png" alt="Logo"></div>
-            <div class="brand-text"><h1>VidhyaRakshaka</h1></div>
+        <div class='brand-header'>
+            <div class='brand-logo-glow'><img src='assets/logo.png' alt='Logo'></div>
+            <div class='brand-text'><h1>VidhyaRakshaka</h1></div>
         </div>
         
-        <div class="form-title">
+        <div class='form-title'>
             <h2>Create Account for Parent</h2>
         </div>
         
-        <div id="alertMsg"></div>
+        <div id='alertMsg'></div>
         
-        <form id="signupForm" onsubmit="handleSignup(event)">
+        <form id='signupForm' onsubmit='handleSignup(event)'>
             
-            <div class="input-group">
-                <div class="input-field">
-                    <i class="ri-building-4-line icon-left"></i>
-                    <input type="number" id="schoolCode" required placeholder="School Code (e.g. 1102)">
+            <div class='input-group'>
+                <div class='input-field'>
+                    <i class='ri-building-4-line icon-left'></i>
+                    <input type='number' id='schoolCode' required placeholder='School Code (e.g. 1102)'>
                 </div>
             </div>
             
-            <div class="input-group">
-                <div class="input-field">
-                    <i class="ri-id-card-line icon-left" id="emailIcon"></i>
-                    <input type="text" id="email" required placeholder="Roll Number">
+            <div class='input-group'>
+                <div class='input-field'>
+                    <i class='ri-id-card-line icon-left' id='emailIcon'></i>
+                    <input type='text' id='email' required placeholder='Roll Number'>
                 </div>
             </div>
             
-            <div class="input-group">
-                <div class="input-field">
-                    <i class="ri-lock-password-line icon-left"></i>
-                    <input type="password" id="password" required placeholder="Create Password" minlength="8" style="padding-right: 44px;">
-                    <i class="ri-eye-off-line toggle-pw" data-target="password" style="position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;"></i>
+            <div class='input-group'>
+                <div class='input-field'>
+                    <i class='ri-lock-password-line icon-left'></i>
+                    <input type='password' id='password' required placeholder='Create Password' minlength='8' style='padding-right: 44px;'>
+                    <i class='ri-eye-off-line toggle-pw' data-target='password' style='position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;'></i>
                 </div>
             </div>
             
-            <div class="input-group">
-                <div class="input-field">
-                    <i class="ri-shield-check-line icon-left"></i>
-                    <input type="password" id="confirmPassword" required placeholder="Confirm Password" style="padding-right: 44px;">
-                    <i class="ri-eye-off-line toggle-pw" data-target="confirmPassword" style="position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;"></i>
+            <div class='input-group'>
+                <div class='input-field'>
+                    <i class='ri-shield-check-line icon-left'></i>
+                    <input type='password' id='confirmPassword' required placeholder='Confirm Password' style='padding-right: 44px;'>
+                    <i class='ri-eye-off-line toggle-pw' data-target='confirmPassword' style='position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;'></i>
                 </div>
             </div>
             
-            <button type="submit" class="btn-submit" id="submitBtn">
+            <button type='submit' class='btn-submit' id='submitBtn'>
                 Create Account
             </button>
         </form>
@@ -239,7 +239,7 @@
         <!-- Login Link Removed -->
     </div>
 
-    <script src="js/api.js"></script>
+    <script src='js/api.js'></script>
     <script>
         const rollInput = document.getElementById('email');
         const schoolInput = document.getElementById('schoolCode');
@@ -274,7 +274,7 @@
                     submitBtn.style.opacity = '1';
                 }
             } catch (e) {
-                console.error("Check failed", e);
+                console.error('Check failed', e);
             }
         }
 
@@ -307,7 +307,7 @@
             btn.disabled = true;
             
             try {
-                const payload = { full_name: "Parent of " + rollNoInput, roll_no: rollNoInput, password: password, confirm_password: confirmPassword, role: role, school_code: schoolCode };
+                const payload = { full_name: 'Parent of ' + rollNoInput, roll_no: rollNoInput, password: password, confirm_password: confirmPassword, role: role, school_code: schoolCode };
                 const response = await apiRequest('/signup', 'POST', payload);
                 showAlert('alertMsg', response.message || 'Registration successful. Redirecting...', 'success');
                 setTimeout(() => { window.location.href = 'index.html'; }, 2000);

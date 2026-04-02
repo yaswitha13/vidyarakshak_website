@@ -12,8 +12,8 @@ class ApiError extends Error {
  * Generic request wrapper
  */
 async function apiRequest(endpoint, method = 'GET', body = null) {
-    if (endpoint.includes('email=null')) {
-        console.warn('Blocking API request with "null" email');
+    if (endpoint && endpoint.includes('email=null')) {
+        console.warn("Blocking API request with 'null' email");
         return null;
     }
     
@@ -67,7 +67,11 @@ async function apiRequest(endpoint, method = 'GET', body = null) {
 // Global UI Helpers
 function showAlert(elementId, message, type = 'error') {
     const el = document.getElementById(elementId);
-    if (!el) return;
+    if (!el) {
+        console.error('Alert element not found:', elementId);
+        alert(message);
+        return;
+    }
     
     el.textContent = message;
     el.className = `alert alert-${type}`;
@@ -127,7 +131,7 @@ const Validator = {
     phone: (val) => /^[6-9]\d{9}$/.test(val),
     username: (val) => /^[a-zA-Z0-9]{4,}$/.test(val),
     name: (val) => /^[a-zA-Z\s]{3,}$/.test(val),
-    required: (val) => val.trim().length > 0
+    required: (val) => val && val.trim().length > 0
 };
 
 function attachValidation(inputId, type) {
