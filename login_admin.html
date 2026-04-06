@@ -147,7 +147,7 @@
                 const response = await apiRequest('/login', 'POST', { email, password, role: 'Admin', school_code: schoolCode });
                 saveSession(email, 'Admin', schoolCode);
                 showAlert('alertMsg', 'Login successful!', 'success');
-                setTimeout(() => { window.location.href = 'admin_dashboard.html'; }, 800);
+                setTimeout(() => { window.location.href = 'premium_subscription.html?role=Admin'; }, 800);
             } catch (error) {
                 showAlert('alertMsg', error.message || 'Login failed.', 'error');
                 btn.innerHTML = 'Sign In'; btn.disabled = false;

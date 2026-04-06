@@ -1,4 +1,4 @@
-let API_BASE_URL = (window.location.protocol === 'file:') ? 'http://127.0.0.1:5000' : `${window.location.protocol}//${window.location.hostname}:5000`;
+let API_BASE_URL = (window.location.protocol === 'file:') ? 'http://180.235.121.245:8027/' : `${window.location.protocol}//${window.location.hostname}:5000`;
 if (API_BASE_URL.endsWith('/')) API_BASE_URL = API_BASE_URL.slice(0, -1);
 
 class ApiError extends Error {
