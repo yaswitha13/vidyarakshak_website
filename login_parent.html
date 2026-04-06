@@ -141,7 +141,7 @@
                 const response = await apiRequest('/login', 'POST', { roll_no: rollNumber, password, role: 'Parent', school_code: schoolCode });
                 saveSession(rollNumber, 'Parent', schoolCode);
                 showAlert('alertMsg', 'Login successful!', 'success');
-                setTimeout(() => { window.location.href = 'premium_subscription.html?role=Parent'; }, 800);
+                setTimeout(() => { window.location.href = 'parent_dashboard.html'; }, 800);
             } catch (error) {
                 showAlert('alertMsg', error.message || 'Login failed.', 'error');
                 btn.innerHTML = 'Sign In'; btn.disabled = false;

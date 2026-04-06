@@ -3,7 +3,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>VidyaRakshak - Create Account for Parent</title>
+    <title>VidyaRakshak - Parent Registration</title>
     <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
     <link href='https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css' rel='stylesheet'>
     <link rel='stylesheet' href='css/style.css'>
@@ -18,225 +18,163 @@
         body { 
             display: flex; 
             min-height: 100vh; 
-            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); 
+            background-color: #ffffff; 
             color: var(--text-main); 
-            align-items: center; 
-            justify-content: center; 
-            padding: 20px; 
+            align-items: stretch; 
+            justify-content: stretch; 
+            padding: 0; 
+            margin: 0; 
+            overflow-y: auto; 
+            overflow-x: hidden; 
         }
         
         .auth-container { 
             display: flex; 
-            flex-direction: column;
-            width: 100%;
-            max-width: 420px; 
+            width: 100%; 
+            min-height: 100vh; 
             background: #ffffff; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
-            padding: 40px 32px;
-            align-items: center;
-        }
-        
-        .brand-header { 
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            margin-bottom: 24px; 
-        }
-        
-        .brand-logo-glow { 
-            width: 64px; 
-            height: 64px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            margin-bottom: 12px;
-        }
-        
-        .brand-logo-glow img { 
-            width: 100%; 
-            height: 100%; 
-            border-radius: 50%; 
-            object-fit: contain; 
-        }
-        
-        .brand-text h1 { 
-            font-size: 22px; 
-            font-weight: 800; 
-            color: #1E293B; 
-            letter-spacing: -0.5px; 
-            line-height: 1.1; 
-            text-align: center;
-        }
-        
-        .form-title { 
-            margin-bottom: 24px; 
-            text-align: center;
-            width: 100%;
-        }
-        
-        .form-title h2 { 
-            font-size: 20px; 
-            font-weight: 700; 
-            color: #0F172A; 
-            letter-spacing: -0.5px; 
-        }
-        
-        form { width: 100%; }
-        
-        .input-group { 
-            margin-bottom: 16px; 
-            width: 100%;
-        }
-        
-        .input-field { 
+            border-radius: 0; 
+            box-shadow: none; 
+            overflow: hidden; 
             position: relative; 
+        }
+        
+        .auth-visual { 
+            width: 45%; 
+            background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%); 
+            padding: 50px; 
             display: flex; 
-            align-items: center; 
-            background: #F8FAFC; 
-            border: 1.5px solid #E2E8F0; 
-            border-radius: 12px; 
-            transition: 0.3s; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            position: relative; 
+            overflow: hidden; 
         }
+        .auth-visual::before { content: ''; position: absolute; top: -20%; left: -20%; width: 300px; height: 300px; background: rgba(255, 255, 255, 0.4); border-radius: 50%; filter: blur(50px); }
+        .auth-visual::after { content: ''; position: absolute; bottom: -10%; right: -10%; width: 250px; height: 250px; background: rgba(59, 130, 246, 0.15); border-radius: 50%; filter: blur(40px); }
         
-        .input-field i.icon-left { 
-            position: absolute; 
-            left: 16px; 
-            font-size: 18px; 
-            color: #94A3B8; 
-            transition: 0.3s; 
-        }
+        .visual-content { position: relative; z-index: 10; }
         
-        .input-field input { 
-            width: 100%; 
-            height: 48px; 
-            padding: 0 16px 0 44px; 
-            border: none; 
-            background: transparent; 
-            font-size: 15px; 
-            font-weight: 500; 
-            color: var(--text-main); 
-            outline: none; 
-            border-radius: 12px;
-        }
+        .brand-header { display: flex; align-items: center; gap: 14px; margin-bottom: 50px; }
+        .brand-logo-glow { width: 56px; height: 56px; border-radius: 50%; background: white; padding: 4px; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.15); display:flex; align-items:center; justify-content:center; }
+        .brand-logo-glow img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .brand-text h1 { font-size: 24px; font-weight: 800; color: #1E293B; letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 2px;}
+        .brand-text p { color: #64748B; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;}
         
+        .hero-statement h2 { font-size: 34px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #0F172A; letter-spacing: -1px; }
+        .hero-statement h2 span { color: var(--primary); }
+        .hero-statement p { font-size: 16px; color: #475569; line-height: 1.6; font-weight: 500;}
+        
+        .illustration { margin-top: auto; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .illustration i { font-size: 120px; color: rgba(37, 99, 235, 0.2); }
+        
+        .auth-form-wrapper { width: 55%; padding: 40px 10%; position: relative; display: flex; flex-direction: column; justify-content: center; }
+        
+        .back-link { position: absolute; top: 30px; right: 40px; display: flex; align-items: center; gap: 6px; color: #64748B; text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.2s; }
+        .back-link:hover { color: var(--primary); transform: translateX(-4px); }
+        
+        .form-title { margin-bottom: 36px; margin-top: 20px;}
+        .form-title h2 { font-size: 30px; font-weight: 800; margin-bottom: 8px; color: #0F172A; letter-spacing: -0.5px; }
+        .form-title p { font-size: 15px; color: #64748B; font-weight: 500; }
+        
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 8px; }
+        
+        .input-field { position: relative; display: flex; align-items: center; background: #ffffff; border: 1.5px solid #E2E8F0; border-radius: 12px; transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.01); }
+        .input-field i.icon-left { position: absolute; left: 16px; font-size: 18px; color: #94A3B8; transition: 0.3s; }
+        .input-field input { width: 100%; height: 50px; padding: 0 16px 0 46px; border: none; background: transparent; font-size: 15px; font-weight: 500; color: var(--text-main); outline: none; border-radius: 12px; }
         .input-field input::placeholder { color: #94A3B8; }
-        
-        .input-field:focus-within { 
-            border-color: var(--primary); 
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); 
-        }
-        
+        .input-field:focus-within { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); transform: translateY(-1px); }
         .input-field:focus-within i.icon-left { color: var(--primary); }
         
-        .btn-submit { 
-            width: 100%; 
-            height: 48px; 
-            margin-top: 8px; 
-            background: linear-gradient(to right, var(--primary), #3B82F6); 
-            color: white; 
-            font-size: 16px; 
-            font-weight: 700; 
-            border: none; 
-            border-radius: 12px; 
-            cursor: pointer; 
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); 
-            transition: all 0.3s ease; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 8px; 
-        }
+        .btn-submit { width: 100%; height: 52px; margin-top: 10px; background: var(--primary); color: white; font-size: 16px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .btn-submit:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3); }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         
-        .btn-submit:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3); 
-        }
+        .login-act { text-align: center; margin-top: 30px; font-size: 14px; color: #64748B; font-weight: 500;}
+        .login-act a { color: var(--primary); font-weight: 700; text-decoration: none; transition: 0.2s; }
+        .login-act a:hover { color: var(--primary-dark); text-decoration: underline; }
         
-        .login-act { 
-            text-align: center; 
-            margin-top: 24px; 
-            font-size: 14px; 
-            color: #64748B; 
-            font-weight: 500;
-        }
+        #alertMsg { border-radius: 10px; margin-bottom: 20px; padding: 12px 16px; font-size: 14px; font-weight: 500; }
         
-        .login-act a { 
-            color: var(--primary); 
-            font-weight: 700; 
-            text-decoration: none; 
-            transition: 0.2s; 
-        }
-        
-        .login-act a:hover { 
-            color: var(--primary-dark); 
-            text-decoration: underline; 
-        }
-        
-        #alertMsg { 
-            border-radius: 10px; 
-            margin-bottom: 16px; 
-            padding: 12px 16px; 
-            font-size: 14px; 
-            font-weight: 500; 
-            width: 100%;
-            text-align: center;
+        @media (max-width: 900px) { 
+            .auth-container { flex-direction: column; } 
+            .auth-visual { width: 100%; padding: 40px; display: none; } 
+            .auth-form-wrapper { width: 100%; padding: 40px 30px; } 
         }
     </style>
 </head>
 <body>
     <div class='auth-container'>
-        
-        <div class='brand-header'>
-            <div class='brand-logo-glow'><img src='assets/logo.png' alt='Logo'></div>
-            <div class='brand-text'><h1>VidhyaRakshaka</h1></div>
+        <div class='auth-visual'>
+            <div class='visual-content'>
+                <div class='brand-header'>
+                    <div class='brand-logo-glow'><img src='assets/logo.png' alt='Logo'></div>
+                    <div class='brand-text'><h1>VidyaRakshak</h1><p>Protecting Education</p></div>
+                </div>
+                <div class='hero-statement'>
+                    <h2>Parent<br><span>Registration Hub</span></h2>
+                    <p>Join our secure network to stay involved in your child's education and safety monitoring.</p>
+                </div>
+            </div>
+            <div class='illustration'>
+                <i class='ri-user-add-fill'></i>
+            </div>
         </div>
         
-        <div class='form-title'>
-            <h2>Create Account for Parent</h2>
+        <div class='auth-form-wrapper'>
+            <a href='index.html' class='back-link'><i class='ri-arrow-left-line'></i> Back Home</a>
+            
+            <div class='form-title'>
+                <h2>Create Account</h2>
+                <p>Register as a parent to access student monitoring.</p>
+            </div>
+            
+            <div id='alertMsg'></div>
+            
+            <form id='signupForm' onsubmit='handleSignup(event)'>
+                <div class='input-group'>
+                    <label>School Code</label>
+                    <div class='input-field'>
+                        <i class='ri-building-4-line icon-left'></i>
+                        <input type='number' id='schoolCode' required placeholder='e.g. 102'>
+                    </div>
+                </div>
+                
+                <div class='input-group'>
+                    <label>Student Roll Number</label>
+                    <div class='input-field'>
+                        <i class='ri-id-card-line icon-left' id='emailIcon'></i>
+                        <input type='text' id='email' required placeholder='Enter student roll number'>
+                    </div>
+                </div>
+                
+                <div class='input-group'>
+                    <label>Create Password</label>
+                    <div class='input-field'>
+                        <i class='ri-lock-password-line icon-left'></i>
+                        <input type='password' id='password' required placeholder='Min 8 characters' minlength='8' style='padding-right: 46px;'>
+                        <i class='ri-eye-off-line toggle-pw' data-target='password' style='position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;'></i>
+                    </div>
+                </div>
+                
+                <div class='input-group'>
+                    <label>Confirm Password</label>
+                    <div class='input-field'>
+                        <i class='ri-shield-check-line icon-left'></i>
+                        <input type='password' id='confirmPassword' required placeholder='Repeat password' style='padding-right: 46px;'>
+                        <i class='ri-eye-off-line toggle-pw' data-target='confirmPassword' style='position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;'></i>
+                    </div>
+                </div>
+                
+                <button type='submit' class='btn-submit' id='submitBtn'>
+                    Create Account
+                </button>
+            </form>
+            
+            <div class='login-act'>
+                Already have an account? <a href='login_parent.html'>Sign In</a>
+            </div>
         </div>
-        
-        <div id='alertMsg'></div>
-        
-        <form id='signupForm' onsubmit='handleSignup(event)'>
-            
-            <div class='input-group'>
-                <div class='input-field'>
-                    <i class='ri-building-4-line icon-left'></i>
-                    <input type='number' id='schoolCode' required placeholder='School Code (e.g. 1102)'>
-                </div>
-            </div>
-            
-            <div class='input-group'>
-                <div class='input-field'>
-                    <i class='ri-id-card-line icon-left' id='emailIcon'></i>
-                    <input type='text' id='email' required placeholder='Roll Number'>
-                </div>
-            </div>
-            
-            <div class='input-group'>
-                <div class='input-field'>
-                    <i class='ri-lock-password-line icon-left'></i>
-                    <input type='password' id='password' required placeholder='Create Password' minlength='8' style='padding-right: 44px;'>
-                    <i class='ri-eye-off-line toggle-pw' data-target='password' style='position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;'></i>
-                </div>
-            </div>
-            
-            <div class='input-group'>
-                <div class='input-field'>
-                    <i class='ri-shield-check-line icon-left'></i>
-                    <input type='password' id='confirmPassword' required placeholder='Confirm Password' style='padding-right: 44px;'>
-                    <i class='ri-eye-off-line toggle-pw' data-target='confirmPassword' style='position: absolute; right: 16px; cursor: pointer; color: #94a3b8; font-size: 18px;'></i>
-                </div>
-            </div>
-            
-            <button type='submit' class='btn-submit' id='submitBtn'>
-                Create Account
-            </button>
-        </form>
-        
-        <!-- Login Link Removed -->
     </div>
 
     <script src='js/api.js'></script>
@@ -252,26 +190,23 @@
             const school = schoolInput.value.trim();
 
             if (roll.length < 4 || !school) {
-                rollInput.style.borderColor = '#E2E8F0';
+                rollInput.closest('.input-field').style.borderColor = '#E2E8F0';
                 return;
             }
 
             try {
                 const response = await apiRequest(`/api/check-parent-exists/${school}/${roll}`, 'GET');
                 if (response.exists) {
-                    showAlert('alertMsg', 'roll_no already exists', 'error');
-                    rollInput.style.borderColor = '#EF4444';
+                    showAlert('alertMsg', 'A parent account already exists for this roll number.', 'error');
+                    rollInput.closest('.input-field').style.borderColor = '#EF4444';
                     submitBtn.disabled = true;
-                    submitBtn.style.opacity = '0.5';
                 } else {
-                    // Check if other alerts are present before clearing
                     if (alertMsg.textContent === 'A parent account already exists for this roll number.') {
                         alertMsg.textContent = '';
                         alertMsg.style.display = 'none';
                     }
-                    rollInput.style.borderColor = '#10B981';
+                    rollInput.closest('.input-field').style.borderColor = '#10B981';
                     submitBtn.disabled = false;
-                    submitBtn.style.opacity = '1';
                 }
             } catch (e) {
                 console.error('Check failed', e);
@@ -284,13 +219,10 @@
         async function handleSignup(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn'); 
-            const alertMsg = document.getElementById('alertMsg');
-            
-            const role = 'Parent'; 
-            const schoolCode = document.getElementById('schoolCode').value;
-            const rollNoInput = document.getElementById('email').value; 
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            const schoolCode = document.getElementById('schoolCode').value;
+            const rollNo = document.getElementById('email').value; 
             
             if (password !== confirmPassword) { 
                 showAlert('alertMsg', 'Passwords do not match.', 'error'); 
@@ -299,18 +231,25 @@
 
             const passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{8,}$/;
             if (!passwordPattern.test(password)) {
-                showAlert('alertMsg', 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.', 'error');
+                showAlert('alertMsg', 'Password must be at least 8 characters, include uppercase, lowercase, number, and special character.', 'error');
                 return;
             }
             
-            btn.innerHTML = 'Processing... <i class="ri-loader-4-line ri-spin"></i>'; 
+            btn.innerHTML = 'Creating Account... <i class="ri-loader-4-line ri-spin"></i>'; 
             btn.disabled = true;
             
             try {
-                const payload = { full_name: 'Parent of ' + rollNoInput, roll_no: rollNoInput, password: password, confirm_password: confirmPassword, role: role, school_code: schoolCode };
+                const payload = { 
+                    full_name: 'Parent of ' + rollNo, 
+                    roll_no: rollNo, 
+                    password: password, 
+                    confirm_password: confirmPassword, 
+                    role: 'Parent', 
+                    school_code: schoolCode 
+                };
                 const response = await apiRequest('/signup', 'POST', payload);
-                showAlert('alertMsg', response.message || 'Registration successful. Redirecting...', 'success');
-                setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+                showAlert('alertMsg', response.message || 'Registration successful!', 'success');
+                setTimeout(() => { window.location.href = 'login_parent.html'; }, 2000);
             } catch (error) {
                 showAlert('alertMsg', error.message || 'Signup failed.', 'error');
                 btn.innerHTML = 'Create Account'; 

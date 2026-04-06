@@ -160,7 +160,7 @@
                 saveSession(email, 'Teacher', schoolCode);
                 localStorage.setItem('teacherName', response.user.full_name);
                 showAlert('alertMsg', 'Login successful!', 'success');
-                setTimeout(() => { window.location.href = 'premium_subscription.html?role=Teacher'; }, 800);
+                setTimeout(() => { window.location.href = 'teacher_dashboard.html'; }, 800);
             } catch (error) {
                 showAlert('alertMsg', error.message || 'Login failed.', 'error');
                 btn.innerHTML = 'Sign In'; btn.disabled = false;
